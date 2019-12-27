@@ -141,7 +141,7 @@ fg=black</panel_attributes>
       <w>100</w>
       <h>30</h>
     </coordinates>
-    <panel_attributes>SimpleClass</panel_attributes>
+    <panel_attributes>Coordenada</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -170,6 +170,17 @@ fg=black</panel_attributes>
 +
 +
 +</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>840</x>
+      <y>230</y>
+      <w>100</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>Model</panel_attributes>
     <additional_attributes/>
   </element>
 </diagram>
