@@ -9,7 +9,7 @@
       <w>1010</w>
       <h>620</h>
     </coordinates>
-    <panel_attributes>ConsultorSismos
+    <panel_attributes>ConsultorSismico
 --
 bg=none</panel_attributes>
     <additional_attributes/>
@@ -22,7 +22,7 @@ bg=none</panel_attributes>
       <w>110</w>
       <h>50</h>
     </coordinates>
-    <panel_attributes>ConsultorSismo
+    <panel_attributes>ConsultorSismico
 --
 + init():void
 bg=none</panel_attributes>
