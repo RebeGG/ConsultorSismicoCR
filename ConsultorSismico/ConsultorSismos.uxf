@@ -155,4 +155,21 @@ fg=black</panel_attributes>
     <panel_attributes>TablaDatos</panel_attributes>
     <additional_attributes/>
   </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>320</x>
+      <y>560</y>
+      <w>120</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>BarraCoordenada
+--
+- coordenadaLbl: JLabel
+--
++
++
++</panel_attributes>
+    <additional_attributes/>
+  </element>
 </diagram>
