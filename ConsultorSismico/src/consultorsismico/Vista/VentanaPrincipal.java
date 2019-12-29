@@ -38,6 +38,7 @@ public class VentanaPrincipal extends JFrame implements Observer{
     private JMenuItem itemSalir;
     private JPanel panelPrincipal;
     private static final String MAPA_PATH = "/media/MapaCR.png";
+    //private static final String MAPA_PATH = model.getImagen().getUrl();
     private VentanaSeleccion ventanaSeleccion;
     private VentanaTabular ventanaTabular;
 
