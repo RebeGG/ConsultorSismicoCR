@@ -8,7 +8,7 @@ public class Model {
 //    try {
 //            JAXBContext ctx = JAXBContext.newInstance(BaseMapa.class);
 //            Unmarshaller mrs = ctx.createUnmarshaller();
-//            BaseMapa base = (BaseMapa) mrs.unmarshal(new File("../map.xml"));
+//            MapaBase base = (MapaBase) mrs.unmarshal(new File("../map.xml"));
 //            System.out.println(base); ////esto solo prueba que esté funcionando todo, se quita despues
 //        } catch (JAXBException ex) {
 //            System.err.printf("Excepción: '%s'%n", ex.getMessage());
