@@ -1,7 +1,14 @@
 package consultorsismico.Modelo;
 
-public class Model {
+import java.util.Observable;
+
+public class Model extends Observable {
     private Coordenada coordena;
+    
+    public void update(){
+        setChanged();
+        notifyObservers();
+    }
     
     //Esta parte debe ir en el Modelo, creo
     //Es para cargar la imagen y las coordenadas principales, pero esto solo debe hacerse una vez en toda la corrida del programa
