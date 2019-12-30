@@ -1,7 +1,12 @@
 package consultorsismico.Controlador;
 
+import consultorsismico.Modelo.MapaBase;
 import consultorsismico.Modelo.Model;
+import java.io.File;
 import java.util.Observer;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Unmarshaller;
 
 public class Controlador {
 
@@ -23,6 +28,15 @@ public class Controlador {
     }
     public void actualizar() {
         datos.update();
+    }
+    public void unMarshallXML(){
+         try {
+            JAXBContext ctx = JAXBContext.newInstance(MapaBase.class);
+            Unmarshaller mrs = ctx.createUnmarshaller();
+            MapaBase base = (MapaBase) mrs.unmarshal(new File("../map.xml"));
+        } catch (JAXBException ex) {
+            System.err.printf("Excepción: '%s'%n", ex.getMessage());
+        }
     }
     
     public void cerrarAplicacion() {

@@ -11,9 +11,11 @@ public class ConsultorSismico {
     }
     
     public void init(){
+        Controlador controller=new Controlador();
+        controller.unMarshallXML();
         SwingUtilities.invokeLater(() -> {
             new VentanaPrincipal("Mapa Sismológico",
-                    new Controlador()).init();
+                    controller).init();
         });
     }
     
