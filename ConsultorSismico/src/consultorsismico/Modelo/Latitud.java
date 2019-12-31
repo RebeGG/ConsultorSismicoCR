@@ -60,4 +60,11 @@ public class Latitud {
     public String toString(){
       return String.format("%d° %d' %d'' %s", getGrados(), getMinutos(), getSegundos(), getDireccion());  
     }
+    
+    public double latitudToDecimal() {
+        if ("N".equals(getDireccion())) {
+            return getGrados() + (getMinutos() / 60) + (getSegundos() / 60);
+        }
+        return getGrados() + (getMinutos() / 60) + (getSegundos() / 60) * -1;
+    }
 }

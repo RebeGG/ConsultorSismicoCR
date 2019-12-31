@@ -68,4 +68,11 @@ public class Longitud {
     public String toString(){
       return String.format("%d° %d' %d'' %s", getGrados(), getMinutos(), getSegundos(), getDireccion());  
     }
+    
+    public double longitudToDecimal() {
+        if ("E".equals(getDireccion())) {
+            return getGrados() + (getMinutos() / 60) + (getSegundos() / 3600);
+        }
+        return getGrados() + (getMinutos() / 60) + (getSegundos() / 3600) * -1;
+    }
 }
