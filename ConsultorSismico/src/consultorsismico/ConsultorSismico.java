@@ -13,7 +13,7 @@ import javax.swing.SwingUtilities;
 public class ConsultorSismico {
 
     public static void main(String[] args) {
-        //new ConsultorSismico().init();
+        new ConsultorSismico().init();
         
         PosicionImagen primera = new PosicionImagen(86,67);
         PosicionImagen segunda = new PosicionImagen(663,636);

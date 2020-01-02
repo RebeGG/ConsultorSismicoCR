@@ -1,21 +1,34 @@
 package consultorsismico.Modelo;
 
-import java.awt.List;
+import java.util.List;
+import java.util.ArrayList;
 import java.util.Observable;
+import java.util.Observer;
 
-public class Model extends Observable {
+public class Model extends Observable{
+
     private Sismo sismo;
-    private List sismos;
+    private List<Sismo> sismos;
+    private MapaBase base;
 
     public Model(Sismo sismo, List sismos) {
         this.sismo = sismo;
         this.sismos = sismos;
     }
-    
-    public Model(){
-        //this(null, null);
+
+    public Model(Sismo sismo, List sismos, MapaBase base) {
+        this.sismo = sismo;
+        this.sismos = sismos;
+        this.base = base;
     }
-     
+
+    public Model() {
+        this.sismo = null;
+        this.sismos = new ArrayList<>();
+        this.base = null;
+        
+    }
+
 //Esta parte debe ir en el Modelo, creo
 //Es para cargar la imagen y las coordenadas principales, pero esto solo debe hacerse una vez en toda la corrida del programa
 //    try {
@@ -26,7 +39,6 @@ public class Model extends Observable {
 //        } catch (JAXBException ex) {
 //            System.err.printf("Excepción: '%s'%n", ex.getMessage());
 //        }
-
     public Sismo getSismo() {
         return sismo;
     }
@@ -47,4 +59,18 @@ public class Model extends Observable {
         notifyObservers();
     }
     
+     @Override
+    public void addObserver(Observer obs) {
+        super.addObserver(obs);
+        update();
+    }
+
+    public void update() {
+        setChanged();
+        notifyObservers();
+    }
+
+    
+    
+
 }
