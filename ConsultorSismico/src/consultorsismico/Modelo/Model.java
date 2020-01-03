@@ -1,11 +1,12 @@
 package consultorsismico.Modelo;
 
+import java.awt.Graphics;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
-public class Model extends Observable{
+public class Model extends Observable {
 
     private Sismo sismo;
     private List<Sismo> sismos;
@@ -26,7 +27,7 @@ public class Model extends Observable{
         this.sismo = null;
         this.sismos = new ArrayList<>();
         this.base = null;
-        
+
     }
 
 //Esta parte debe ir en el Modelo, creo
@@ -58,8 +59,8 @@ public class Model extends Observable{
         setChanged();
         notifyObservers();
     }
-    
-     @Override
+
+    @Override
     public void addObserver(Observer obs) {
         super.addObserver(obs);
         update();
@@ -70,7 +71,12 @@ public class Model extends Observable{
         notifyObservers();
     }
 
-    
-    
+    public void dibujar(Graphics bg, Coordenada coordenada) {
+        synchronized (sismos) {
+            for (Sismo m : sismos) {
+                m.dibujar(bg, coordenada);
+            }
+        }
+    }
 
 }

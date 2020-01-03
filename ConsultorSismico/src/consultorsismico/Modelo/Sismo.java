@@ -1,6 +1,7 @@
 package consultorsismico.Modelo;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
@@ -72,7 +73,7 @@ public class Sismo {
         this.fecha = fecha;
     }
 
-    public void dibujar(Graphics bg){
+    public void dibujar(Graphics bg, Coordenada coordenada){
         Graphics2D g = (Graphics2D) bg;
         g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
                 RenderingHints.VALUE_ANTIALIAS_ON);
@@ -80,5 +81,8 @@ public class Sismo {
         g.setColor(color);
         g.drawOval(coordenada.getPosI().getX(), coordenada.getPosI().getY(), 40, 40);
         g.fillOval(coordenada.getPosI().getX(), coordenada.getPosI().getY(), 40, 40);
+        g.setColor(Color.BLACK);
+        g.setFont(new Font("TimesRoman", Font.BOLD, 12));
+        g.drawString("7,5", coordenada.getPosI().getX()+15, coordenada.getPosI().getY()+24);
     }
 }
