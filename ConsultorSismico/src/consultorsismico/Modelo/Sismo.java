@@ -14,19 +14,29 @@ public class Sismo {
     private int registro;
     private String fecha;
     private Color color;
+    private int secuenciaAnual;
 
-    public Sismo(Coordenada coordenada, Coordenada longitud, double magnitud, double profundidad, int registro, String fecha) {
+    public Sismo(int registro, int secuenciaAnual, String fecha, Coordenada coordenada, double magnitud, double profundidad) {
         this.coordenada = coordenada;
         this.magnitud = magnitud;
         this.profundidad = profundidad;
         this.registro = registro;
         this.fecha = fecha;
-        this.color = new Color(0f,1f,.1f,.3f);
+        this.secuenciaAnual = secuenciaAnual;
+        this.color = new Color(0f, 1f, .1f, .3f);
     }
 
     public Sismo() {
-        this(null, null, 0.0, 0.0, 0, null);
-        this.color = new Color(0f,1f,.1f,.3f);
+        this(0, 0, null, null, 0.0, 0.0);
+        this.color = new Color(0f, 1f, .1f, .3f);
+    }
+
+    public int getSecuenciaAnual() {
+        return secuenciaAnual;
+    }
+
+    public void setSecuenciaAnual(int secuenciaAnual) {
+        this.secuenciaAnual = secuenciaAnual;
     }
 
     public Coordenada getCoordenada() {
@@ -73,7 +83,7 @@ public class Sismo {
         this.fecha = fecha;
     }
 
-    public void dibujar(Graphics bg, Coordenada coordenada){
+    public void dibujar(Graphics bg, Coordenada coordenada) {
         Graphics2D g = (Graphics2D) bg;
         g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
                 RenderingHints.VALUE_ANTIALIAS_ON);
@@ -83,6 +93,12 @@ public class Sismo {
         g.fillOval(coordenada.getPosI().getX(), coordenada.getPosI().getY(), 40, 40);
         g.setColor(Color.BLACK);
         g.setFont(new Font("TimesRoman", Font.BOLD, 12));
-        g.drawString("7,5", coordenada.getPosI().getX()+15, coordenada.getPosI().getY()+24);
+        g.drawString(String.valueOf(magnitud), coordenada.getPosI().getX() + 15, coordenada.getPosI().getY() + 24);
+    }
+    
+    @Override
+    public String toString(){
+        return String.format("%d %d %s %s %s %f %fKM", registro, secuenciaAnual,fecha, coordenada.getPosM().getLatitud().toString(), 
+                coordenada.getPosM().getLongitud().toString(), magnitud, profundidad);
     }
 }
