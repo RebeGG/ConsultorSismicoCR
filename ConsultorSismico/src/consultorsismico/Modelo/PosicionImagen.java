@@ -33,8 +33,4 @@ public class PosicionImagen {
         this.y = y;
     }
     
-    @Override
-    public String toString(){
-        return String.format("X: %d%nY: %d%n", getX(), getY());
-    }
 }

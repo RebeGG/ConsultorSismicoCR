@@ -6,17 +6,24 @@ import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
-public class Model extends Observable {
+public class Modelo extends Observable {
 
     private Sismo sismo;
     private List<Sismo> sismos;
+    private Coordenada coordenada;
 
-    public Model(Sismo sismo, List sismos) {
+    public Modelo(Sismo sismo, List sismos) {
         this.sismo = sismo;
         this.sismos = sismos;
     }
 
-    public Model() {
+    public Modelo(Sismo sismo, List<Sismo> sismos, Coordenada coordenada) {
+        this.sismo = sismo;
+        this.sismos = sismos;
+        this.coordenada = coordenada;
+    }
+
+    public Modelo() {
         this.sismo = null;
         this.sismos = new ArrayList<>();
     }
@@ -41,18 +48,28 @@ public class Model extends Observable {
         notifyObservers();
     }
 
+    public Coordenada getCoordenada() {
+        return coordenada;
+    }
+
+    public void setCoordenada(Coordenada coordenada) {
+        this.coordenada = coordenada;
+        setChanged();
+        notifyObservers();
+    }
+
     @Override
     public void addObserver(Observer obs) {
         super.addObserver(obs);
     }
-    
-    public void agregar(Sismo sismo){
+
+    public void agregar(Sismo sismo) {
         sismos.add(sismo);
     }
-    
+
     //PARA USAR ESTE AGREGAR HAY QUE PRIMERO CREAR LAS COORDENADAS
-    public void agregar(int registro, int secuenciaAnual, String fecha, Coordenada coordenada, double magnitud, double profundidad){
-        agregar(new Sismo(registro,secuenciaAnual,fecha,coordenada, magnitud,profundidad));
+    public void agregar(int registro, int secuenciaAnual, String fecha, Coordenada coordenada, double magnitud, double profundidad) {
+        agregar(new Sismo(registro, secuenciaAnual, fecha, coordenada, magnitud, profundidad));
     }
 
     public void dibujar(Graphics bg) {
