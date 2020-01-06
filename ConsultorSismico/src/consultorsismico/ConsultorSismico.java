@@ -13,7 +13,7 @@ import javax.swing.SwingUtilities;
 public class ConsultorSismico {
 
     public static void main(String[] args) {
-        new ConsultorSismico().init();
+        //new ConsultorSismico().init();
         
         PosicionImagen primera = new PosicionImagen(86,67);
         PosicionImagen segunda = new PosicionImagen(663,636);
@@ -37,26 +37,27 @@ public class ConsultorSismico {
         Longitud lon3 = new Longitud (84,15,0, "W");
         PosicionMapa m3 = new PosicionMapa(lat3, lon3);
         
-        double aaaa= 84 + (15/60) + (0/3600);
-        float b= 1/2;
-        System.out.println(b);
-//        double x= a.longitudPix(lon3);
-//        double y = a.latitudPix(lat3);
-//        Double nwX= new Double(x);
-//        int nw = nwX.intValue();
-//        Double nyX= new Double(y);
-//        int ny = nyX.intValue();
-//        PosicionImagen tres = new PosicionImagen(nw,ny);
-//        Coordenada c3 = new Coordenada ("Tercera", tres, m3);
-//        
-//        System.out.printf("Tercera coordenada: %s\n", c3.toString());
-//        System.out.printf("Tercera latitud: %s\n", lat3.latitudToDecimal());
-//        System.out.printf("Ancho Pixeles: %d\n", a.anchoPixeles());
-//        System.out.printf("Altura Pixeles: %d\n", a.alturaPixeles());
-//        System.out.printf("Ancho Grados: %d\n", a.anchoGrados());
-//        System.out.printf("Altura Gradods: %d\n", a.alturaGrados());
-//        System.out.printf("Latitud t: %f\n", a.latitudT(lat3));
-//        System.out.printf("Longitud T: %f\n", a.longitudT(lon3));
+//        double a= 84 + (double)15/60 + 0/3600;
+//        System.out.println(a);
+//        float b= (float)1/2;
+//        System.out.println(b);
+        double x= a.longitudPix(lon3);
+        double y = a.latitudPix(lat3);
+        Double nwX= new Double(x);
+        int nw = nwX.intValue();
+        Double nyX= new Double(y);
+        int ny = nyX.intValue();
+        PosicionImagen tres = new PosicionImagen(nw,ny);
+        Coordenada c3 = new Coordenada ("Tercera", tres, m3);
+        
+        System.out.printf("Tercera coordenada: %s\n", c3.toString());
+        System.out.printf("Tercera latitud: %s\n", lat3.latitudToDecimal());
+        System.out.printf("Ancho Pixeles: %d\n", a.anchoPixeles());
+        System.out.printf("Altura Pixeles: %d\n", a.alturaPixeles());
+        System.out.printf("Ancho Grados: %d\n", a.anchoGrados());
+        System.out.printf("Altura Gradods: %d\n", a.alturaGrados());
+        System.out.printf("Latitud t: %f\n", a.latitudT(lat3));
+        System.out.printf("Longitud T: %f\n", a.longitudT(lon3));
     }
     
     public void init(){

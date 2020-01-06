@@ -10,36 +10,17 @@ public class Model extends Observable {
 
     private Sismo sismo;
     private List<Sismo> sismos;
-    private MapaBase base;
 
     public Model(Sismo sismo, List sismos) {
         this.sismo = sismo;
         this.sismos = sismos;
     }
 
-    public Model(Sismo sismo, List sismos, MapaBase base) {
-        this.sismo = sismo;
-        this.sismos = sismos;
-        this.base = base;
-    }
-
     public Model() {
         this.sismo = null;
         this.sismos = new ArrayList<>();
-        this.base = null;
-
     }
 
-//Esta parte debe ir en el Modelo, creo
-//Es para cargar la imagen y las coordenadas principales, pero esto solo debe hacerse una vez en toda la corrida del programa
-//    try {
-//            JAXBContext ctx = JAXBContext.newInstance(BaseMapa.class);
-//            Unmarshaller mrs = ctx.createUnmarshaller();
-//            MapaBase base = (MapaBase) mrs.unmarshal(new File("../map.xml"));
-//            System.out.println(base); ////esto solo prueba que esté funcionando todo, se quita despues
-//        } catch (JAXBException ex) {
-//            System.err.printf("Excepción: '%s'%n", ex.getMessage());
-//        }
     public Sismo getSismo() {
         return sismo;
     }
@@ -63,18 +44,21 @@ public class Model extends Observable {
     @Override
     public void addObserver(Observer obs) {
         super.addObserver(obs);
-        update();
+    }
+    
+    public void agregar(Sismo sismo){
+        sismos.add(sismo);
+    }
+    
+    //PARA USAR ESTE AGREGAR HAY QUE PRIMERO CREAR LAS COORDENADAS
+    public void agregar(int registro, int secuenciaAnual, String fecha, Coordenada coordenada, double magnitud, double profundidad){
+        agregar(new Sismo(registro,secuenciaAnual,fecha,coordenada, magnitud,profundidad));
     }
 
-    public void update() {
-        setChanged();
-        notifyObservers();
-    }
-
-    public void dibujar(Graphics bg, Coordenada coordenada) {
+    public void dibujar(Graphics bg) {
         synchronized (sismos) {
             for (Sismo m : sismos) {
-                m.dibujar(bg, coordenada);
+                m.dibujar(bg);
             }
         }
     }

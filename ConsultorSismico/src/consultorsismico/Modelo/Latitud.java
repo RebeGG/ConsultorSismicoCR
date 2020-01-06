@@ -3,7 +3,7 @@ package consultorsismico.Modelo;
 import javax.xml.bind.annotation.XmlElement;
 
 public class Latitud {
-    
+
     private int grados;
     private int minutos;
     private int segundos;
@@ -15,9 +15,9 @@ public class Latitud {
         this.segundos = segundos;
         this.direccion = direccion;
     }
-    
-    public Latitud(){
-        this(0,0,0,"");
+
+    public Latitud() {
+        this(0, 0, 0, "");
     }
 
     public int getGrados() {
@@ -51,20 +51,17 @@ public class Latitud {
         return direccion;
     }
 
-    @XmlElement(name="latitude-direction")
+    @XmlElement(name = "latitude-direction")
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
-    
+
     @Override
-    public String toString(){
-      return String.format("%d° %d' %d'' %s", getGrados(), getMinutos(), getSegundos(), getDireccion());  
+    public String toString() {
+        return String.format("%d° %d' %d'' %s", getGrados(), getMinutos(), getSegundos(), getDireccion());
     }
-    
+
     public double latitudToDecimal() {
-        if ("N".equals(getDireccion())) {
-            return getGrados() + (getMinutos() / 60) + (getSegundos() / 60);
-        }
-        return getGrados() + (getMinutos() / 60) + (getSegundos() / 60) * -1;
+        return getGrados() + (double) getMinutos() / 60 + (double) getSegundos() / 60;
     }
 }

@@ -11,6 +11,7 @@ public class Conversion {
         this.segunda = segunda;
     }
 
+    //Métodos básicos setters & getters
     public Coordenada getPrimera() {
         return primera;
     }
@@ -27,126 +28,141 @@ public class Conversion {
         this.segunda = segunda;
     }
 
-    //Falta el constructor, setters y getters
-    public int anchoPixeles() {
-        return segunda.getPosI().getX() - primera.getPosI().getX();
+    //Métodos de cálculo
+    //La altura en grados
+    public int alturaGrados() {
+        return segunda.getPosM().getLatitud().getGrados() - (primera.getPosM().getLatitud().getGrados());
     }
 
-    public int anchoGrados() {
-        if (segunda.getPosM().getLongitud().getDireccion() == "W" && primera.getPosM().getLongitud().getDireccion() == "W") {
-            return -segunda.getPosM().getLongitud().getGrados() - (-primera.getPosM().getLongitud().getGrados());
-        }
-        if (segunda.getPosM().getLongitud().getDireccion() == "W" && primera.getPosM().getLongitud().getDireccion() == "E") {
-            return -segunda.getPosM().getLongitud().getGrados() - (primera.getPosM().getLongitud().getGrados());
-        }
-        if (segunda.getPosM().getLongitud().getDireccion() == "E" && primera.getPosM().getLongitud().getDireccion() == "W") {
-            return segunda.getPosM().getLongitud().getGrados() - (-primera.getPosM().getLongitud().getGrados());
-        }
-        return segunda.getPosM().getLongitud().getGrados() - (primera.getPosM().getLongitud().getGrados());
-    }
-
+    //La altura en pixeles
     public int alturaPixeles() {
         return segunda.getPosI().getY() - primera.getPosI().getY();
     }
 
-    public int alturaGrados() {
-        if (segunda.getPosM().getLatitud().getDireccion() == "S" && primera.getPosM().getLatitud().getDireccion() == "S") {
-            return -segunda.getPosM().getLatitud().getGrados() - (-primera.getPosM().getLatitud().getGrados());
-        }
-        if (segunda.getPosM().getLatitud().getDireccion() == "S" && primera.getPosM().getLatitud().getDireccion() == "N") {
-            return -segunda.getPosM().getLatitud().getGrados() - (primera.getPosM().getLatitud().getGrados());
-        }
-        if (segunda.getPosM().getLatitud().getDireccion() == "S" && primera.getPosM().getLatitud().getDireccion() == "N") {
-            return segunda.getPosM().getLatitud().getGrados() - (-primera.getPosM().getLatitud().getGrados());
-        }
-        return segunda.getPosM().getLatitud().getGrados() - (primera.getPosM().getLatitud().getGrados());
+    //La altura en grados
+    public int anchoGrados() {
+        return -segunda.getPosM().getLongitud().getGrados() - (-primera.getPosM().getLongitud().getGrados());
     }
 
+    //La altura en pixeles
+    public int anchoPixeles() {
+        return segunda.getPosI().getX() - primera.getPosI().getX();
+    }
+
+    // ------BUSCAR LA POSICIÓN GEOGRÁFICA (X, Y)------
+    //Buscar la posición y según una latitud
     // t = x - a / b - a
     public double latitudT(Latitud aux) {
-        double lat = aux.latitudToDecimal();
-        if (segunda.getPosM().getLatitud().getDireccion() == "S" && primera.getPosM().getLatitud().getDireccion() == "S") {
-            return (lat - (primera.getPosM().getLatitud().getGrados()) / (segunda.getPosM().getLatitud().getGrados() - (primera.getPosM().getLatitud().getGrados())));
-        }
-        if (segunda.getPosM().getLatitud().getDireccion() == "S" && primera.getPosM().getLatitud().getDireccion() == "N") {
-            return (lat - (-primera.getPosM().getLatitud().getGrados()) / (segunda.getPosM().getLatitud().getGrados() - (-primera.getPosM().getLatitud().getGrados())));
-        }
-        if (segunda.getPosM().getLatitud().getDireccion() == "N" && primera.getPosM().getLatitud().getDireccion() == "N") {
-            return ((-lat - (-primera.getPosM().getLatitud().getGrados())) / (-segunda.getPosM().getLatitud().getGrados() - (-primera.getPosM().getLatitud().getGrados())));
-
-        }
-        return (-lat - (primera.getPosM().getLatitud().getGrados()) / (-segunda.getPosM().getLatitud().getGrados() - (primera.getPosM().getLatitud().getGrados())));
+        return ((aux.latitudToDecimal() + primera.getPosM().getLatitud().getGrados()) / (-segunda.getPosM().getLatitud().getGrados() + primera.getPosM().getLatitud().getGrados()));
     }
 
-    // t = x - a / b - a
-    public double longitudT(Longitud aux) {
-        double log = aux.longitudToDecimal();
-
-        if (segunda.getPosM().getLongitud().getDireccion() == "E" && primera.getPosM().getLongitud().getDireccion() == "E") {
-            return (log - (primera.getPosM().getLongitud().getGrados()) / (segunda.getPosM().getLongitud().getGrados() - (primera.getPosM().getLongitud().getGrados())));
-        }
-        if (segunda.getPosM().getLongitud().getDireccion() == "E" && primera.getPosM().getLatitud().getDireccion() == "W") {
-            return (log - (-primera.getPosM().getLongitud().getGrados()) / (segunda.getPosM().getLongitud().getGrados() - (-primera.getPosM().getLongitud().getGrados())));
-        }
-        if (segunda.getPosM().getLongitud().getDireccion() == "W" && primera.getPosM().getLongitud().getDireccion() == "E") {
-            return (-log - (primera.getPosM().getLongitud().getGrados()) / (-segunda.getPosM().getLongitud().getGrados() - (primera.getPosM().getLongitud().getGrados())));
-        }
-
-//        System.out.println(log);
-//         System.out.println(primera.getPosM().getLongitud().getGrados());
-//        System.out.println((-log - (-primera.getPosM().getLongitud().getGrados())));
-//        System.out.println((-segunda.getPosM().getLongitud().getGrados() - (-primera.getPosM().getLongitud().getGrados())));
-        return ((-log + (primera.getPosM().getLongitud().getGrados())) / (-segunda.getPosM().getLongitud().getGrados() - (-primera.getPosM().getLongitud().getGrados())));
-    }
-
-    public double longitudPix(Longitud aux) {
-        return primera.getPosI().getX() + longitudT(aux) * (segunda.getPosI().getX() - primera.getPosI().getX());
-    }
-
+    //Buscar la latitud en pixeles
+    //f(t) = a + t(b-a)
     public double latitudPix(Latitud aux) {
         return primera.getPosI().getY() + latitudT(aux) * (segunda.getPosI().getY() - primera.getPosI().getY());
     }
 
-    //Longitud WEST EAST
+    //Buscar la posición x según una longitud
+    // t = x - a / b - a
+    public double longitudT(Longitud aux) {
+        double log = aux.longitudToDecimal();
+        return ((log + (primera.getPosM().getLongitud().getGrados())) / (-segunda.getPosM().getLongitud().getGrados() - (-primera.getPosM().getLongitud().getGrados())));
+    }
+
+    //f(t) = a + t(b-a)
+    public double longitudPix(Longitud aux) {
+        return primera.getPosI().getX() + longitudT(aux) * (segunda.getPosI().getX() - primera.getPosI().getX());
+    }
+
+    public PosicionImagen coordenadatoPixeles(Longitud x, Latitud y) {
+        return new PosicionImagen((int) longitudPix(x), (int) latitudPix(y));
+    }
+
+    // ------BUSCAR LA COORDENADA GEOGRÁFICA (LONGITUD, LATITUD)------
+    
+    //Encontrar t de pixeles a coordenadas
     public double longitudTPix(int x) {
         return (x - primera.getPosI().getX()) / anchoPixeles();
     }
 
+    //Encontrar los grados f(t) = a + t(b-a)
     public double longitudGrados(int x) {
-        if (primera.getPosM().getLongitud().getDireccion() == "E") {
-            return primera.getPosM().getLongitud().getGrados() + longitudTPix(x) * anchoGrados();
-        }
         return -primera.getPosM().getLongitud().getGrados() + longitudTPix(x) * anchoGrados();
     }
 
-    //m = integer((dd - d) × 60) = 15'
+    //m' = integer((dd - d) × 60) 
     public int longitudMinutos(int x) {
         return (int) (Math.abs(longitudGrados(x)) - (int) Math.abs(longitudGrados(x))) * 60;
     }
 
-    //s = (dd - d - m/60) × 3600 = 50"
+    //s" = (dd - d - m/60) × 3600 
     public int longitudSegundos(int x) {
         return (int) (Math.abs(longitudGrados(x)) - (int) Math.abs(longitudGrados(x)) - (longitudMinutos(x) / 60)) * 3600;
     }
+
+    public Longitud longPix(int y) {
+        return new Longitud((int) Math.abs(longitudGrados(y)), longitudMinutos(y), longitudSegundos(y), "W");
+    }
     
-    public double latitudTPix(int y){
+    //Encontrar t de pixeles a coordenadas
+    public double latitudTPix(int y) {
         return (y - primera.getPosI().getY()) / alturaPixeles();
     }
     
+    //Encontrar los grados f(t) = a + t(b-a)
     public double latitudGrados(int x) {
-        if (primera.getPosM().getLatitud().getDireccion() == "N") {
-            return primera.getPosM().getLatitud().getGrados() + longitudTPix(x) * anchoGrados();
-        }
-        return -primera.getPosM().getLatitud().getGrados() + longitudTPix(x) * anchoGrados();
+        return primera.getPosM().getLatitud().getGrados() + latitudTPix(x) * anchoGrados();
     }
 
-    //m = integer((dd - d) × 60) = 15'
+    //m' = integer((dd - d) × 60)
     public int latitudMinutos(int x) {
         return (int) (Math.abs(latitudGrados(x)) - (int) Math.abs(latitudGrados(x))) * 60;
     }
 
-    //s = (dd - d - m/60) × 3600 = 50"
+    //s" = (dd - d - m/60) × 3600 
     public int latitudSegundos(int x) {
         return (int) (Math.abs(latitudGrados(x)) - (int) Math.abs(latitudGrados(x)) - (latitudMinutos(x) / 60)) * 3600;
     }
+
+    public Latitud latPix(int x) {
+        return new Latitud((int) Math.abs(latitudGrados(x)), latitudMinutos(x), latitudSegundos(x), "N");
+    }
+    
+    //Se crea una nueva latitud y longitud a partir de los x y y
+    public PosicionMapa nuevaCoordenada(int x, int y) {
+        return new PosicionMapa(latPix(y), longPix(x));
+    }
+    
+    // ------BUSCAR LA COORDENADA GEOGRÁFICA (DOUBLE)------
+    
+    public int latitudMinutos(double x) {
+        return (int) (Math.abs(x) - (int) Math.abs(x)) * 60;
+    }
+
+    //s" = (dd - d - m/60) × 3600 
+    public int latitudSegundos(double x) {
+        return (int) ((Math.abs(x) - (int) Math.abs(x)) - (latitudMinutos(x) / 60)) * 3600;
+    }
+
+    public Latitud latPix(double x) {
+        return new Latitud((int) x, latitudMinutos(x), latitudSegundos(x), "N");
+    }
+    
+    public int longitudMinutos(double x) {
+        return (int) (Math.abs(x) - (int) Math.abs(x)) * 60;
+    }
+
+    //s" = (dd - d - m/60) × 3600 
+    public int longitudSegundos(double x) {
+        return (int) ((Math.abs(x) - (int) Math.abs(x)) - (longitudMinutos(x) / 60)) * 3600;
+    }
+
+    public Longitud longPix(double x) {
+        return new Longitud((int) x, longitudMinutos(x), longitudSegundos(x), "N");
+    }
+    
+    public PosicionMapa nuevaCoordenada(double x, double y) {
+        return new PosicionMapa(latPix(y), longPix(x));
+    }
+    
 }

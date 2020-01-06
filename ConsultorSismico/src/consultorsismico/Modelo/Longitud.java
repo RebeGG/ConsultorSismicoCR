@@ -12,6 +12,7 @@ import javax.xml.bind.annotation.XmlElement;
  * @author rebecca
  */
 public class Longitud {
+
     private int grados;
     private int minutos;
     private int segundos;
@@ -23,9 +24,9 @@ public class Longitud {
         this.segundos = segundos;
         this.direccion = direccion;
     }
-    
-    public Longitud(){
-        this(0,0,0,"");
+
+    public Longitud() {
+        this(0, 0, 0, "");
     }
 
     public int getGrados() {
@@ -59,20 +60,17 @@ public class Longitud {
         return direccion;
     }
 
-    @XmlElement(name="longitude-direction")
+    @XmlElement(name = "longitude-direction")
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
-    
+
     @Override
-    public String toString(){
-      return String.format("%d° %d' %d'' %s", getGrados(), getMinutos(), getSegundos(), getDireccion());  
+    public String toString() {
+        return String.format("%d° %d' %d'' %s", getGrados(), getMinutos(), getSegundos(), getDireccion());
     }
-    
+
     public double longitudToDecimal() {
-        if ("E".equals(getDireccion())) {
-            return getGrados() + (getMinutos() / 60) + (getSegundos() / 3600);
-        }
-        return getGrados() + (getMinutos() / 60) + (getSegundos() / 3600) * -1;
+        return (getGrados() + (double) getMinutos() / 60 + (double) getSegundos() / 3600) * -1;
     }
 }
