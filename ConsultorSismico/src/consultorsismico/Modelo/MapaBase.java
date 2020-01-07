@@ -23,7 +23,7 @@ public class MapaBase {
         return imagen;
     }
 
-    @XmlElement
+    @XmlElement(name = "image")
     public void setImagen(Imagen imagen) {
         this.imagen = imagen;
     }
