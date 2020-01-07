@@ -9,6 +9,8 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Point;
+import java.util.Observable;
+import java.util.Observer;
 import java.awt.Rectangle;
 import java.awt.Dimension;
 import java.awt.RenderingHints;
@@ -19,7 +21,7 @@ import java.awt.image.BufferedImage;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-public class PanelMapa extends PanelAplicacion{
+public class PanelMapa extends PanelAplicacion implements Observer{
     
     private Controlador controlador;
     private Image mapa;
@@ -42,6 +44,7 @@ public class PanelMapa extends PanelAplicacion{
     
     PanelMapa(Color fondo, BarraCoordenada estado, Controlador controlador, Image mapa, BufferedImage buffer, MapaBase base){
         super(fondo, buffer);
+//        this.modelo = modelo;
         this.mapa = mapa;
         this.base = base;
         this.controlador = controlador;
@@ -161,4 +164,10 @@ public class PanelMapa extends PanelAplicacion{
 
         //estado.mostrarMensaje(modelo.getCoordenada().toString());
     }      
+    
+    @Override
+    public void update(Observable o, Object arg){
+        modelo = (Model) o;
+        this.repaint();
+    }
 }

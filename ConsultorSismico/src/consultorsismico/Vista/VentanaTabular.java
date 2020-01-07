@@ -129,6 +129,6 @@ public class VentanaTabular extends javax.swing.JFrame implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("Bórrenme cuando sepan si me necesitan o no");
     }
 }

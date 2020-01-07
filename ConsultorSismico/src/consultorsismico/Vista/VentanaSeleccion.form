@@ -33,17 +33,14 @@
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="magnitudMaxLbl1" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                          <Component id="magnitudMaxLbl2" alignment="0" min="-2" pref="91" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="magnitudMaxLbl2" min="-2" pref="91" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="fechaFinal" max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="magnitudMaxLbl1" min="-2" pref="100" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="fechaInicial" min="-2" pref="146" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="fechaInicial" pref="147" max="32767" attributes="0"/>
+                          <Component id="fechaFinal" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -191,6 +188,9 @@
     </Component>
     <Component class="javax.swing.JRadioButton" name="cualquierMagnitud">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="e6" green="be" red="4f" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Cualquier Magnitud"/>
       </Properties>
       <Events>

@@ -9,15 +9,13 @@ import consultorsismico.Controlador.Controlador;
 import consultorsismico.Modelo.Sismo;
 import java.awt.Color;
 import java.text.SimpleDateFormat;
-import java.util.Observable;
-import java.util.Observer;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author rebecca
  */
-public class VentanaSeleccion extends javax.swing.JFrame implements Observer{
+public class VentanaSeleccion extends javax.swing.JFrame{
 
     public VentanaSeleccion(String titulo, Controlador controlador) {
         super(titulo);
@@ -76,6 +74,7 @@ public class VentanaSeleccion extends javax.swing.JFrame implements Observer{
 
         magnitudMax.setText("0.0");
 
+        cualquierMagnitud.setBackground(new java.awt.Color(79, 190, 230));
         cualquierMagnitud.setText("Cualquier Magnitud");
         cualquierMagnitud.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -108,15 +107,13 @@ public class VentanaSeleccion extends javax.swing.JFrame implements Observer{
                         .addComponent(tituloLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(21, 21, 21)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(magnitudMaxLbl1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(magnitudMaxLbl2, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(magnitudMaxLbl2, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(fechaFinal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(magnitudMaxLbl1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(fechaInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addComponent(fechaInicial, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
+                            .addComponent(fechaFinal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
@@ -232,7 +229,6 @@ public class VentanaSeleccion extends javax.swing.JFrame implements Observer{
     }
     
     public void init(){
-        controlador.registrar(this);
         setVisible(true);
     }
     
@@ -312,8 +308,4 @@ public class VentanaSeleccion extends javax.swing.JFrame implements Observer{
     private javax.swing.JLabel tituloLbl;
     // End of variables declaration//GEN-END:variables
 
-    @Override
-    public void update(Observable o, Object arg) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }
