@@ -181,8 +181,6 @@ public class VentanaSeleccion extends javax.swing.JFrame{
     private void consultarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarBtnActionPerformed
         try {
             //controller.consultar(this.Filtro(1), this.Filtro(2));
-            //controller.consultar(Double.parseDuble(this.magnitudMin.getText()), Dpuble.parseDouble(this.magnitudMaxBox.getSelectedItem()), , );
-            //controller.consultar(this.Filtro());
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, "Datos incompletos","CONSULTAR-ERROR",JOptionPane.ERROR_MESSAGE);
         }
@@ -268,28 +266,6 @@ public class VentanaSeleccion extends javax.swing.JFrame{
         }
         return sismo;
     }
-    
-//    public Filtro Filtro() throws Exception{
-//        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-//        Double magnitudInicial = Double.parseDouble(magnitudMin.getText());
-//        Double magnitudFinal = Double.parseDouble(magnitudMax.getText());
-//        Filtro filtro = new Filtro();
-//        filtro.setFechaInicial(dateFormat.format(fechaInicial.getDate()));
-//        sismoFinal.setFechaFinal(dateFormat.format(fechaFinal.getDate()));
-//        if(!magnitudInicial.isNaN() && magnitudInicial > 0 && magnitudInicial <= 10){
-//              filtro.setMagnitud(magnitudInicial);
-//        }
-//        else{
-//              throw new Exception("Datos no corresponden a parámetros aceptados");
-//        ]
-//        if(!magnitudFinal.isNaN() && magnitudFinal > 0 && magnitudFinal <= 10){
-//              filtro.setMagnitudFinal(magnitudFinal);
-//        }
-//        else{
-//              throw new Exception("Datos no corresponden a parámetros aceptados");
-//        ]
-//        return filtro;
-//    }
     
     private Controlador controlador;
     // Variables declaration - do not modify//GEN-BEGIN:variables
