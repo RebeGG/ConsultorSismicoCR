@@ -39,6 +39,26 @@ public class Coordenada {
     public PosicionMapa getPosM() {
         return posM;
     }
+
+//
+//    @XmlElement
+//    public void setSeconds(int seconds) {
+//        this.seconds = seconds;
+//    }
+//
+//    public String getDirection() {
+//        return direction;
+//    }
+//
+//    @XmlElement
+//    public void setDirection(String direction) {
+//        this.direction = direction;
+//    }
+
+//    @Override
+//    public String toString() {
+//        return String.format("%d°%d'%d''%s", degrees, minutes, seconds, direction);
+//    }
     
     @XmlElement(name = "map-position")
     public void setPosM(PosicionMapa posM) {
