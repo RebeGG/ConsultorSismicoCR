@@ -148,6 +148,7 @@ public class Sismo {
             g.setFont(new Font("TimesRoman", Font.BOLD, 12));
             g.drawString(String.valueOf(magnitud), coordenada.getPosI().getX() + 10, coordenada.getPosI().getY() + 22);
         }
+<<<<<<< Updated upstream
         
 //        g.setColor(new Color(0f, 1f, .1f, .3f));
 //        g.drawOval(coordenada.getX(), coordenada.getY(), 40, 40);
@@ -156,6 +157,8 @@ public class Sismo {
 //        g.setFont(new Font("TimesRoman", Font.BOLD, 12));
 //        g.drawString(String.valueOf(magnitud), coordenada.getX() + 15, coordenada.getY() + 24);
 >>>>>>> Modelo-Fernanda
+=======
+>>>>>>> Stashed changes
     }
     
     @Override
