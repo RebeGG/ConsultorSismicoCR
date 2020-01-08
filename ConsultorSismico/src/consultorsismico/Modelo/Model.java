@@ -77,12 +77,12 @@ public class Model extends Observable{
         }
     }
 
-    //public void dibujar(Graphics bg) {
-    //    synchronized (sismos) {
-    //        for (Sismo s : sismos) {
-    //            s.dibujar(bg);
-    //        }
-    //    }
-    //}
+//    public void dibujar(Graphics bg) {
+//        synchronized (sismos) {
+//            for (Sismo s : sismos) {
+//                s.dibujar(bg);
+//            }
+//        }
+//    }
 
 }

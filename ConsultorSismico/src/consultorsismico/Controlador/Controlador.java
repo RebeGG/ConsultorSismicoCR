@@ -2,6 +2,7 @@ package consultorsismico.Controlador;
 
 import consultorsismico.Modelo.MapaBase;
 import consultorsismico.Modelo.Model;
+import java.awt.Graphics;
 import java.io.File;
 import java.util.Observer;
 import javax.xml.bind.JAXBContext;
@@ -22,9 +23,6 @@ public class Controlador {
         datos.addObserver(obs);
     }
 
-    public Controlador(Model datos) {
-        this.datos = datos;
-   }
     
     public void suprimir(Observer actual) {
         System.out.printf("Suprimiendo: %s..%n", actual);
@@ -46,6 +44,15 @@ public class Controlador {
     public void cerrarAplicacion() {
         System.out.println("Aplicación finalizada normalmente..");
         System.exit(0);
+    }
+    
+    public void dibujarModel(Graphics g){
+        datos.dibujar(g);
+        
+    }
+    
+    public void leerTxt(File file){
+        
     }
     
     private Model datos;
