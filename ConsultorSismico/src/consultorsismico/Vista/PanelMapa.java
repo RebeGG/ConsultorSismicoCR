@@ -2,7 +2,7 @@ package consultorsismico.Vista;
 
 import consultorsismico.Controlador.Controlador;
 import consultorsismico.Modelo.MapaBase;
-import consultorsismico.Modelo.Model;
+import consultorsismico.Modelo.Modelo;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -25,7 +25,7 @@ public class PanelMapa extends PanelAplicacion implements Observer{
     
     private Controlador controlador;
     private Image mapa;
-    private Model modelo;
+    private Modelo modelo;
     private BarraCoordenada estado;
     private Point posicionInicio, posicionRaton;
     private boolean botonOprimido;
@@ -167,7 +167,7 @@ public class PanelMapa extends PanelAplicacion implements Observer{
     
     @Override
     public void update(Observable o, Object arg){
-        modelo = (Model) o;
+        modelo = (Modelo) o;
         this.repaint();
     }
 }

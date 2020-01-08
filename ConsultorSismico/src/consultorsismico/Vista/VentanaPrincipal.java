@@ -2,7 +2,7 @@ package consultorsismico.Vista;
 
 import consultorsismico.Controlador.Controlador;
 import consultorsismico.Modelo.MapaBase;
-import consultorsismico.Modelo.Model;
+import consultorsismico.Modelo.Modelo;
 import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Dimension;
@@ -41,7 +41,7 @@ public class VentanaPrincipal extends JFrame implements Observer{
     private JMenuItem itemSeleccion;
     private JMenuItem itemSalir;
     private PanelAplicacion panelPrincipal;
-    private Model modelo = null;
+    private Modelo modelo = null;
     private VentanaSeleccion ventanaSeleccion;
     private VentanaTabular ventanaTabular;
     private MapaBase base;
@@ -158,7 +158,7 @@ public class VentanaPrincipal extends JFrame implements Observer{
 
     @Override
     public void update(Observable o, Object arg) {
-        modelo = (Model) o;
+        modelo = (Modelo) o;
         panelPrincipal.repaint();
     }
 }
