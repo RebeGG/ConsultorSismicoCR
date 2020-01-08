@@ -15,6 +15,10 @@ public class ListaCoordenadas {
     public void agregar(Coordenada c){
         coordenadas.add(c);
     }
+    
+    public Coordenada obtenerCoordenada(int pos){
+        return coordenadas.get(pos);
+    }
 
     
     @Override

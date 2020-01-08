@@ -21,6 +21,10 @@ public class Controlador {
     public void registrar(Observer obs) {
         datos.addObserver(obs);
     }
+
+    public Controlador(Model datos) {
+        this.datos = datos;
+   }
     
     public void suprimir(Observer actual) {
         System.out.printf("Suprimiendo: %s..%n", actual);

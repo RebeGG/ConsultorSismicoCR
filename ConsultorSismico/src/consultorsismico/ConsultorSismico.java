@@ -4,8 +4,8 @@ import consultorsismico.Controlador.Controlador;
 import consultorsismico.Vista.VentanaPrincipal;
 import javax.swing.SwingUtilities;
 
-public class ConsultorSismico {
 
+public class ConsultorSismico {
     public static void main(String[] args) {
         new ConsultorSismico().init();
     }
