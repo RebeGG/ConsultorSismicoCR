@@ -1,7 +1,7 @@
 package consultorsismico.Controlador;
 
 import consultorsismico.Modelo.MapaBase;
-import consultorsismico.Modelo.Model;
+import consultorsismico.Modelo.Modelo;
 import java.io.File;
 import java.util.Observer;
 import javax.xml.bind.JAXBContext;
@@ -11,10 +11,10 @@ import javax.xml.bind.Unmarshaller;
 public class Controlador {
     
     public Controlador() {
-        this(new Model());
+        this(new Modelo());
     }
 
-    public Controlador(Model datos) {
+    public Controlador(Modelo datos) {
         this.datos = datos;
    }
     
@@ -46,5 +46,5 @@ public class Controlador {
         }
     }
 
-    private Model datos;
+    private Modelo datos;
 }

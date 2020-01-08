@@ -71,7 +71,13 @@ public class Modelo extends Observable {
     public void agregar(int registro, int secuenciaAnual, String fecha, Coordenada coordenada, double magnitud, double profundidad) {
         agregar(new Sismo(registro, secuenciaAnual, fecha, coordenada, magnitud, profundidad));
     }
-
+    
+    public List buscar(Sismo primero, Sismo segundo){
+        List<Sismo> aux = new ArrayList<>();
+        
+        return aux;
+    }
+    
     public void dibujar(Graphics bg) {
         synchronized (sismos) {
             for (Sismo m : sismos) {
