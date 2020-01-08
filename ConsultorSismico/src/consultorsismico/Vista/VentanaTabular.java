@@ -6,12 +6,15 @@
 package consultorsismico.Vista;
 
 import consultorsismico.Controlador.Controlador;
+import java.awt.Color;
+import java.util.Observable;
+import java.util.Observer;
 
 /**
  *
  * @author rebecca
  */
-public class VentanaTabular extends javax.swing.JFrame {
+public class VentanaTabular extends javax.swing.JFrame implements Observer {
 
     /**
      * Creates new form VentanaTabular
@@ -20,6 +23,7 @@ public class VentanaTabular extends javax.swing.JFrame {
         super(titulo);
         this.controlador = controlador;
         initComponents();
+        this.getContentPane().setBackground(new Color(79, 190, 230));
     }
 
     /**
@@ -113,7 +117,7 @@ public class VentanaTabular extends javax.swing.JFrame {
     }
 
     public void init(){
-        //controlador.registrar(this);
+        controlador.registrar(this);
         setVisible(true);
     }
     private Controlador controlador;
@@ -122,4 +126,9 @@ public class VentanaTabular extends javax.swing.JFrame {
     private javax.swing.JTable tabla;
     private javax.swing.JLabel tituloLbl;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void update(Observable o, Object arg) {
+        System.out.println("Bórrenme cuando sepan si me necesitan o no");
+    }
 }

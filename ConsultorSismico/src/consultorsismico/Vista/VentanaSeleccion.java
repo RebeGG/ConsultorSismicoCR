@@ -6,17 +6,22 @@
 package consultorsismico.Vista;
 
 import consultorsismico.Controlador.Controlador;
+import consultorsismico.Modelo.Sismo;
+import java.awt.Color;
+import java.text.SimpleDateFormat;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author rebecca
  */
-public class VentanaSeleccion extends javax.swing.JFrame {
+public class VentanaSeleccion extends javax.swing.JFrame{
 
     public VentanaSeleccion(String titulo, Controlador controlador) {
         super(titulo);
         this.controlador = controlador;
         initComponents();
+        this.getContentPane().setBackground(new Color(79, 190, 230));
     }
 
     /**
@@ -28,30 +33,163 @@ public class VentanaSeleccion extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        magnitudMinLbl = new javax.swing.JLabel();
         tituloLbl = new javax.swing.JLabel();
+        consultarBtn = new javax.swing.JButton();
+        magnitudMaxLbl = new javax.swing.JLabel();
+        magnitudMaxLbl1 = new javax.swing.JLabel();
+        magnitudMaxLbl2 = new javax.swing.JLabel();
+        magnitudMin = new javax.swing.JTextField();
+        magnitudMax = new javax.swing.JTextField();
+        cualquierMagnitud = new javax.swing.JRadioButton();
+        fechaInicial = new com.toedter.calendar.JDateChooser();
+        fechaFinal = new com.toedter.calendar.JDateChooser();
+        subtitulo1 = new javax.swing.JLabel();
+        subtitulo2 = new javax.swing.JLabel();
+
+        magnitudMinLbl.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
+        magnitudMinLbl.setText("Magnitud Mínima: ");
 
         tituloLbl.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
-        tituloLbl.setText("Consultar...");
+        tituloLbl.setText("Consultar");
+
+        consultarBtn.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        consultarBtn.setText("Consultar");
+        consultarBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                consultarBtnActionPerformed(evt);
+            }
+        });
+
+        magnitudMaxLbl.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
+        magnitudMaxLbl.setText("Magnitud Máxima: ");
+
+        magnitudMaxLbl1.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
+        magnitudMaxLbl1.setText("Fecha inicial:");
+
+        magnitudMaxLbl2.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
+        magnitudMaxLbl2.setText("Fecha final:");
+
+        magnitudMin.setText("0.0");
+
+        magnitudMax.setText("0.0");
+
+        cualquierMagnitud.setBackground(new java.awt.Color(79, 190, 230));
+        cualquierMagnitud.setText("Cualquier Magnitud");
+        cualquierMagnitud.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cualquierMagnitudActionPerformed(evt);
+            }
+        });
+
+        fechaInicial.setMaxSelectableDate(new java.util.Date(1580194872000L));
+
+        fechaFinal.setMaxSelectableDate(new java.util.Date(1579503692000L));
+
+        subtitulo1.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
+        subtitulo1.setText("MAGNITUD ------------------------------------------------------------------------------");
+
+        subtitulo2.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
+        subtitulo2.setText("FECHA ------------------------------------------------------------------------------------");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(consultarBtn)
+                .addGap(159, 159, 159))
             .addGroup(layout.createSequentialGroup()
-                .addGap(123, 123, 123)
-                .addComponent(tituloLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(134, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(139, 139, 139)
+                        .addComponent(tituloLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(magnitudMaxLbl1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(magnitudMaxLbl2, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(fechaInicial, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
+                            .addComponent(fechaFinal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(subtitulo2, javax.swing.GroupLayout.DEFAULT_SIZE, 381, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(subtitulo1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(magnitudMinLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(magnitudMin, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(magnitudMaxLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(magnitudMax, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(cualquierMagnitud)
+                        .addGap(38, 38, 38))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(47, 47, 47)
-                .addComponent(tituloLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(206, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(tituloLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(subtitulo1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(magnitudMin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(magnitudMinLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(magnitudMaxLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(magnitudMax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(cualquierMagnitud)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addComponent(subtitulo2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(magnitudMaxLbl1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fechaInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(magnitudMaxLbl2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fechaFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25)
+                .addComponent(consultarBtn)
+                .addGap(23, 23, 23))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void consultarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarBtnActionPerformed
+        try {
+            //controller.consultar(this.Filtro(1), this.Filtro(2));
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "Datos incompletos","CONSULTAR-ERROR",JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_consultarBtnActionPerformed
+
+    private void cualquierMagnitudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cualquierMagnitudActionPerformed
+//        this.magnitudMin.setEnabled(false);
+//        this.magnitudMax.setEnabled(false);
+    }//GEN-LAST:event_cualquierMagnitudActionPerformed
 
     /**
      * @param args the command line arguments
@@ -89,12 +227,61 @@ public class VentanaSeleccion extends javax.swing.JFrame {
     }
     
     public void init(){
-        //controlador.registrar(this);
         setVisible(true);
+    }
+    
+    public Sismo Filtro(int orden) throws Exception{
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        String fecha;
+        Sismo sismo = new Sismo();
+        Double magnitud;
+        if(cualquierMagnitud.isSelected()){
+            magnitud = 10.10;
+            sismo.setMagnitud(magnitud);
+        }
+        switch(orden){
+            case 1: {
+                fecha = dateFormat.format(fechaInicial.getDate());
+                sismo.setFecha(fecha);
+                magnitud = Double.parseDouble(magnitudMin.getText());
+                if(!magnitud.isNaN() && magnitud > 0 && magnitud <= 10){
+                    sismo.setMagnitud(magnitud);
+                }
+                else{
+                    throw new Exception("Datos no corresponden a parámetros aceptados");
+                }
+                
+            }break;
+            case 2:{
+                fecha = dateFormat.format(fechaFinal.getDate());
+                sismo.setFecha(fecha);
+                magnitud = Double.parseDouble(magnitudMax.getText());
+                if(!magnitud.isNaN() && magnitud > 0 && magnitud <= 10){
+                    sismo.setMagnitud(magnitud);
+                }
+                else{
+                    throw new Exception("Datos no corresponden a parámetros aceptados");
+                }
+            }break;
+        }
+        return sismo;
     }
     
     private Controlador controlador;
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton consultarBtn;
+    private javax.swing.JRadioButton cualquierMagnitud;
+    private com.toedter.calendar.JDateChooser fechaFinal;
+    private com.toedter.calendar.JDateChooser fechaInicial;
+    private javax.swing.JTextField magnitudMax;
+    private javax.swing.JLabel magnitudMaxLbl;
+    private javax.swing.JLabel magnitudMaxLbl1;
+    private javax.swing.JLabel magnitudMaxLbl2;
+    private javax.swing.JTextField magnitudMin;
+    private javax.swing.JLabel magnitudMinLbl;
+    private javax.swing.JLabel subtitulo1;
+    private javax.swing.JLabel subtitulo2;
     private javax.swing.JLabel tituloLbl;
     // End of variables declaration//GEN-END:variables
+
 }
