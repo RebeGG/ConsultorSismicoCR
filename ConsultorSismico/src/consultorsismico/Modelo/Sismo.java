@@ -13,18 +13,12 @@ public class Sismo {
     private double profundidad;
     private int registro;
     private String fecha;
-<<<<<<< HEAD
-    private Color color;
-    private int secuenciaAnual;
-
-=======
     private int secuenciaAnual;
     public static final int POS1= 100;
     public static final int POS2= 300;
     public static final int POS3= 600;
     public static final int POS4= 900;
     
->>>>>>> Modelo-Fernanda
     public Sismo(int registro, int secuenciaAnual, String fecha, Coordenada coordenada, double magnitud, double profundidad) {
         this.coordenada = coordenada;
         this.magnitud = magnitud;
@@ -32,18 +26,10 @@ public class Sismo {
         this.registro = registro;
         this.fecha = fecha;
         this.secuenciaAnual = secuenciaAnual;
-<<<<<<< HEAD
-        this.color = new Color(0f, 1f, .1f, .3f);
-=======
->>>>>>> Modelo-Fernanda
     }
 
     public Sismo() {
         this(0, 0, null, null, 0.0, 0.0);
-<<<<<<< HEAD
-        this.color = new Color(0f, 1f, .1f, .3f);
-=======
->>>>>>> Modelo-Fernanda
     }
 
     public int getSecuenciaAnual() {
@@ -98,19 +84,6 @@ public class Sismo {
         this.fecha = fecha;
     }
 
-<<<<<<< HEAD
-    public void dibujar(Graphics bg, Coordenada coordenada) {
-        Graphics2D g = (Graphics2D) bg;
-        g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-                RenderingHints.VALUE_ANTIALIAS_ON);
-
-        g.setColor(color);
-        g.drawOval(coordenada.getPosI().getX(), coordenada.getPosI().getY(), 40, 40);
-        g.fillOval(coordenada.getPosI().getX(), coordenada.getPosI().getY(), 40, 40);
-        g.setColor(Color.BLACK);
-        g.setFont(new Font("TimesRoman", Font.BOLD, 12));
-        g.drawString(String.valueOf(magnitud), coordenada.getPosI().getX() + 15, coordenada.getPosI().getY() + 24);
-=======
     public void dibujar(Graphics bg) {
         
         Graphics2D g = (Graphics2D) bg;
@@ -148,17 +121,7 @@ public class Sismo {
             g.setFont(new Font("TimesRoman", Font.BOLD, 12));
             g.drawString(String.valueOf(magnitud), coordenada.getPosI().getX() + 10, coordenada.getPosI().getY() + 22);
         }
-<<<<<<< Updated upstream
         
-//        g.setColor(new Color(0f, 1f, .1f, .3f));
-//        g.drawOval(coordenada.getX(), coordenada.getY(), 40, 40);
-//        g.fillOval(coordenada.getX(), coordenada.getY(), 40, 40);
-//        g.setColor(Color.BLACK);
-//        g.setFont(new Font("TimesRoman", Font.BOLD, 12));
-//        g.drawString(String.valueOf(magnitud), coordenada.getX() + 15, coordenada.getY() + 24);
->>>>>>> Modelo-Fernanda
-=======
->>>>>>> Stashed changes
     }
     
     @Override
@@ -166,8 +129,4 @@ public class Sismo {
         return String.format("%d %d %s %s %s %f %fKM", registro, secuenciaAnual,fecha, coordenada.getPosM().getLatitud().toString(), 
                 coordenada.getPosM().getLongitud().toString(), magnitud, profundidad);
     }
-<<<<<<< HEAD
-
-=======
->>>>>>> Modelo-Fernanda
 }
