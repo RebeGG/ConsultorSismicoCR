@@ -2,7 +2,7 @@
 <base-map xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="./map.xsd">
     <image>
-        <url>images/MapaCR.png</url>
+        <url>/images/MapaCR.png</url>
         <dimension>
             <width>853</width>
             <height>667</height>
