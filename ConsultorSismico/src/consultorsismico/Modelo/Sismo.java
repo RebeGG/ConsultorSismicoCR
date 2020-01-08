@@ -53,7 +53,7 @@ public class Sismo {
     }
 
     public void setMagnitud(double magnitud) {
-        if (magnitud <= 10.0 && magnitud > 0.0) {
+        if (magnitud <= 10.10 && magnitud > 0.0) {
             this.magnitud = magnitud;
         }
     }
