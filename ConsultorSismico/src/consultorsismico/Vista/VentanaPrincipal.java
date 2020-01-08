@@ -43,7 +43,7 @@ public class VentanaPrincipal extends JFrame implements Observer{
     private PanelAplicacion panelPrincipal;
     private Modelo modelo = null;
     private VentanaSeleccion ventanaSeleccion;
-    private VentanaTabular ventanaTabular;
+    private VentanaTabla ventanaTabla;
     private MapaBase base;
 
     public VentanaPrincipal(String titulo, Controlador controlador) {
@@ -52,12 +52,13 @@ public class VentanaPrincipal extends JFrame implements Observer{
             JAXBContext ctx = JAXBContext.newInstance(MapaBase.class);
             Unmarshaller mrs = ctx.createUnmarshaller();
             this.base = (MapaBase) mrs.unmarshal(new File("./map.xml"));
+            
         } catch (JAXBException ex) {
             System.err.printf("Excepción: '%s'%n", ex.getMessage());
         }
         this.controlador = controlador;
+        this.ventanaTabla = new VentanaTabla("Datos Tabulados",this.controlador);
         this.ventanaSeleccion = new VentanaSeleccion("Consultar Sismos",this.controlador);
-        this.ventanaTabular = new VentanaTabular("Datos",this.controlador);
         
         configurar();
     }
@@ -84,10 +85,9 @@ public class VentanaPrincipal extends JFrame implements Observer{
 
     private void ajustarComponentes(Container contenedor) {
         
-        this.buffer = new BufferedImage(base.getImagen().getDimension().getAncho(),base.getImagen().getDimension().getAlto(), 
-                BufferedImage.TYPE_INT_RGB);
-         try {
-            this.mapaImage = ImageIO.read(getClass().getResourceAsStream(base.getImagen().getUrl()));
+        this.buffer = new BufferedImage(base.getImagen().getDimension().getAncho(),base.getImagen().getDimension().getAlto(),BufferedImage.TYPE_INT_RGB);
+        try {
+            mapaImage = ImageIO.read(getClass().getResourceAsStream(base.getImagen().getUrl()));
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(this, "Mapa no se cargó correctamente","IMAGEN-ERROR",JOptionPane.ERROR_MESSAGE);
         }
@@ -139,7 +139,7 @@ public class VentanaPrincipal extends JFrame implements Observer{
         });
         
         itemTabla.addActionListener((ActionEvent e) -> {
-            ventanaTabular.init();
+            ventanaTabla.init();
         });
     }
     
@@ -148,11 +148,13 @@ public class VentanaPrincipal extends JFrame implements Observer{
         controlador.suprimir(this);
         controlador.cerrarAplicacion();
     }
+
     
     public void init() {
         controlador.registrar(this);
         setVisible(true);
         panelPrincipal.init();
+        coordenadas.init();
         //controlador.iniciarModelo();
     }
 

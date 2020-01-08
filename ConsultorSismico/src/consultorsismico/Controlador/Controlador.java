@@ -36,15 +36,19 @@ public class Controlador {
         datos.deleteObserver(actual);
     }
     
-    public void unMarshallXML(){
-        try {
-            JAXBContext ctx = JAXBContext.newInstance(MapaBase.class);
-            Unmarshaller mrs = ctx.createUnmarshaller();
-            datos.setBase((MapaBase) mrs.unmarshal(new File("./map.xml")));
-        } catch (JAXBException ex) {
-            System.err.printf("Excepción: '%s'%n", ex.getMessage());
-        }
+    public Modelo obtenerModelo(){
+        return datos.obtenerModelo();
     }
+    
+//    public void unMarshallXML(){
+//        try {
+//            JAXBContext ctx = JAXBContext.newInstance(MapaBase.class);
+//            Unmarshaller mrs = ctx.createUnmarshaller();
+//            datos.setBase((MapaBase) mrs.unmarshal(new File("./map.xml")));
+//        } catch (JAXBException ex) {
+//            System.err.printf("Excepción: '%s'%n", ex.getMessage());
+//        }
+//    }
 
     private Modelo datos;
 }
