@@ -6,6 +6,7 @@ import consultorsismico.Modelo.MapaBase;
 import consultorsismico.Modelo.Modelo;
 import consultorsismico.Modelo.Sismo;
 import java.awt.Graphics;
+import java.awt.Point;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -79,6 +80,10 @@ public class Controlador {
 
     public List<Sismo> buscar(Sismo primero, Sismo segundo) {
         return datos.buscar(primero, segundo);
+    }
+    
+    public void actualizaCoordenadasModel(Point p){
+        
     }
 
     private Modelo datos;
