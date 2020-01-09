@@ -17,10 +17,10 @@ import javax.xml.bind.Unmarshaller;
 public class Controlador {
 
     public Controlador() {
-        this(new Model());
+        this(new Modelo());
     }
 
-    public Controlador(Model datos) {
+    public Controlador(Modelo datos) {
         this.datos = datos;
         this.base = null;
     }
