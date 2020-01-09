@@ -18,6 +18,11 @@ public class Coordenada {
         this.posI = posI;
         this.posM = posM;
     }
+
+    public Coordenada() {
+        this("",null,null);
+    }
+    
     
     
     public String getEtiqueta() {

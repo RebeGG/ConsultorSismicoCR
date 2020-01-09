@@ -1,13 +1,15 @@
 package consultorsismico.Controlador;
 
+import consultorsismico.Modelo.Conversion;
 import consultorsismico.Modelo.Coordenada;
 import consultorsismico.Modelo.MapaBase;
-import consultorsismico.Modelo.Model;
+import consultorsismico.Modelo.Modelo;
 import consultorsismico.Modelo.Sismo;
 import java.awt.Graphics;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.List;
 import java.util.Observer;
 import java.util.Scanner;
 import javax.xml.bind.JAXBContext;
@@ -34,10 +36,6 @@ public class Controlador {
         datos.deleteObserver(actual);
     }
 
-    public void actualizar() {
-        datos.update();
-    }
-
     public void unMarshallXML() {
         try {
             JAXBContext ctx = JAXBContext.newInstance(MapaBase.class);
@@ -46,6 +44,8 @@ public class Controlador {
         } catch (JAXBException ex) {
             System.err.printf("Excepción: '%s'%n", ex.getMessage());
         }
+        conver = new Conversion(base.getCoordenadas().obtenerCoordenada(0), base.getCoordenadas().obtenerCoordenada(1));
+
     }
 
     public void cerrarAplicacion() {
@@ -54,16 +54,12 @@ public class Controlador {
     }
 
     public void dibujarModel(Graphics g) {
-//------------depende dibujar en el model pero sin coordenada------------
-//        datos.dibujar(g);
+
+        datos.dibujar(g);
 
     }
 
     public void leerTxt(File file) throws FileNotFoundException {
-        Coordenada cord = base.getCoordenadas().obtenerCoordenada(0);//sólo para no dejar en blanco
-
-        //new Sismo(registro,secuenciaAnual,fecha, new Coordenada(conver.coordenadatoPixeles(double a,double b),
-        //conver.nuevaCoordenada(a,b)), magnitud, profundidad)
         try (Scanner entrada = new Scanner(file)) {
             while (entrada.hasNext()) {
                 int registro = entrada.nextInt();
@@ -73,7 +69,7 @@ public class Controlador {
                 double b = entrada.nextDouble();
                 int magnitud = entrada.nextInt();
                 int prof = entrada.nextInt();
-                datos.getSismos().add(new Sismo(registro, secAnual, fecha, new Coordenada(conver.coordenadatoPixeles(a, b), conver.nuevaCoordenada(a, b)), magnitud, prof));
+                datos.getSismos().add(new Sismo(registro, secAnual, fecha, new Coordenada(conver.coordenadatoPixeles(conver.longPix(a), conver.latPix(b)), conver.nuevaCoordenada(a, b)), magnitud, prof));
             }
         } catch (IOException ex) {
 
@@ -81,7 +77,11 @@ public class Controlador {
 
     }
 
-    private Model datos;
+    public List<Sismo> buscar(Sismo primero, Sismo segundo) {
+        return datos.buscar(primero, segundo);
+    }
+
+    private Modelo datos;
     private MapaBase base;
     private Conversion conver;
 
