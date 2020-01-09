@@ -14,9 +14,16 @@ public class Coordenada {
         this.posM = posM;
     }
 
-    public Coordenada() {
-        this("", null, null);
+    public Coordenada(PosicionImagen posI, PosicionMapa posM) {
+        this.posI = posI;
+        this.posM = posM;
     }
+
+    public Coordenada() {
+        this("",null,null);
+    }
+    
+    
     
     public String getEtiqueta() {
         return etiqueta;
