@@ -4,6 +4,7 @@ import consultorsismico.Modelo.Conversion;
 import consultorsismico.Modelo.Coordenada;
 import consultorsismico.Modelo.MapaBase;
 import consultorsismico.Modelo.Modelo;
+import consultorsismico.Modelo.PosicionImagen;
 import consultorsismico.Modelo.Sismo;
 import java.awt.Graphics;
 import java.awt.Point;
@@ -107,7 +108,7 @@ public class Controlador {
     }
     
     public void actualizaCoordenadasModel(Point p){
-        
+        datos.setCoordenada(new Coordenada(new PosicionImagen(p.x,p.y), conver.nuevaCoordenada(p.x, p.y)));
     }
 
     private Modelo datos;
