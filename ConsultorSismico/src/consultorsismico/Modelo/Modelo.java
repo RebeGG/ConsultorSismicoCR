@@ -65,6 +65,8 @@ public class Modelo extends Observable {
 
     public void agregar(Sismo sismo) {
         sismos.add(sismo);
+        setChanged();
+        notifyObservers();
     }
 
     //PARA USAR ESTE AGREGAR HAY QUE PRIMERO CREAR LAS COORDENADAS
@@ -175,6 +177,36 @@ public class Modelo extends Observable {
         }
         return aux;
     }
+    
+    public int cantidadSismos() {
+        return sismos.size();
+    }
+    
+    public Sismo obtener(int i) {
+        return sismos.get(i);
+    }
+
+    public void borrar() {
+        sismos.clear();
+
+        setChanged();
+        notifyObservers();
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder r = new StringBuilder("[\n");
+        for (Sismo s : sismos) {
+            r.append(String.format("\t%s,%n", s));
+        }
+        r.append("]");
+        return r.toString();
+    }
+
+    public Modelo obtenerModelo() {
+        return this;
+    }
+    
 
     public void dibujar(Graphics bg) {
         synchronized (sismos) {
@@ -183,5 +215,9 @@ public class Modelo extends Observable {
             }
         }
     }
+    
 
+    public void update(){
+        
+    }
 }

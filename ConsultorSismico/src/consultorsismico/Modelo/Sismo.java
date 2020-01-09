@@ -31,6 +31,18 @@ public class Sismo {
     public Sismo() {
         this(0, 0, null, null, 0.0, 0.0);
     }
+    
+    public Object[] toArray() {
+        Object[] r = new Object[4];
+        r[0] = getRegistro();
+        r[1] = getSecuenciaAnual();
+        r[2] = getFecha();
+        r[2] = getCoordenada().getPosM().getLatitud();
+        r[4] = getCoordenada().getPosM().getLongitud();
+        r[5] = getMagnitud();
+        r[6] = getProfundidad();
+        return r;
+    }
 
     public int getSecuenciaAnual() {
         return secuenciaAnual;
@@ -82,6 +94,10 @@ public class Sismo {
 
     public void setFecha(String fecha) {
         this.fecha = fecha;
+    }
+    
+    public static int getFieldCount() {
+        return 7;
     }
 
     public void dibujar(Graphics bg) {

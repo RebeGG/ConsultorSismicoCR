@@ -8,7 +8,6 @@ import consultorsismico.Modelo.Sismo;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
 import java.util.Observer;
@@ -26,7 +25,33 @@ public class Controlador {
     public Controlador(Modelo datos) {
         this.datos = datos;
         this.base = null;
+        this.conver=new Conversion();
     }
+
+    public Modelo getDatos() {
+        return datos;
+    }
+
+    public void setDatos(Modelo datos) {
+        this.datos = datos;
+    }
+
+    public MapaBase getBase() {
+        return base;
+    }
+
+    public void setBase(MapaBase base) {
+        this.base = base;
+    }
+
+    public Conversion getConver() {
+        return conver;
+    }
+
+    public void setConver(Conversion conver) {
+        this.conver = conver;
+    }
+    
 
     public void registrar(Observer obs) {
         datos.addObserver(obs);
@@ -45,8 +70,7 @@ public class Controlador {
         } catch (JAXBException ex) {
             System.err.printf("Excepción: '%s'%n", ex.getMessage());
         }
-        conver = new Conversion(base.getCoordenadas().obtenerCoordenada(0), base.getCoordenadas().obtenerCoordenada(1));
-
+        
     }
 
     public void cerrarAplicacion() {
@@ -60,7 +84,7 @@ public class Controlador {
 
     }
 
-    public void leerTxt(File file) throws FileNotFoundException {
+    public void leerTxt(File file) {
         try (Scanner entrada = new Scanner(file)) {
             while (entrada.hasNext()) {
                 int registro = entrada.nextInt();

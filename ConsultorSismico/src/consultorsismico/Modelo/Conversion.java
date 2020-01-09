@@ -4,11 +4,16 @@ public class Conversion {
 
     Coordenada primera;
     Coordenada segunda;
-    //Tamano tam;
+    
 
     public Conversion(Coordenada primera, Coordenada segunda) {
         this.primera = primera;
         this.segunda = segunda;
+    }
+    
+    public Conversion() {
+        this(new Coordenada(new PosicionImagen(86, 67), new PosicionMapa(new Latitud(11, 0, 0, "N"), new Longitud(86, 0, 0, "W"))),
+                new Coordenada(new PosicionImagen(663, 636), new PosicionMapa(new Latitud(8, 0, 0, "N"), new Longitud(83, 0, 0, "W"))));
     }
 
     //Métodos básicos setters & getters
