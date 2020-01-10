@@ -58,7 +58,7 @@ public class Conversion {
     //Buscar la posición y según una latitud
     // t = x - a / b - a
     public double latitudT(Latitud aux) {
-        return ((aux.latitudToDecimal() + primera.getPosM().getLatitud().getGrados()) / (-segunda.getPosM().getLatitud().getGrados() + primera.getPosM().getLatitud().getGrados()));
+        return ((aux.latitudToDecimal() + primera.getPosM().getLatitud().getGrados()) / (double)(-segunda.getPosM().getLatitud().getGrados() + primera.getPosM().getLatitud().getGrados()));
     }
 
     //Buscar la latitud en pixeles
@@ -71,7 +71,7 @@ public class Conversion {
     // t = x - a / b - a
     public double longitudT(Longitud aux) {
         double log = aux.longitudToDecimal();
-        return ((log + (primera.getPosM().getLongitud().getGrados())) / (-segunda.getPosM().getLongitud().getGrados() - (-primera.getPosM().getLongitud().getGrados())));
+        return ((log + (primera.getPosM().getLongitud().getGrados())) / (double)(-segunda.getPosM().getLongitud().getGrados() - (-primera.getPosM().getLongitud().getGrados())));
     }
 
     //f(t) = a + t(b-a)
@@ -97,9 +97,7 @@ public class Conversion {
 
     //m' = integer((dd - d) × 60) 
     public int longitudMinutos(int x) {
-        double longitud= longitudGrados(x);
-        int res= (int) ((Math.abs(longitud) - (int)Math.abs(longitud)) * 60);
-        return res;
+        return (int) ((Math.abs(longitudGrados(x)) - (int)Math.abs(longitudGrados(x))) * 60);
     }
 
     //s" = (dd - d - m/60) × 3600 
@@ -152,7 +150,7 @@ public class Conversion {
     }
 
     public Latitud latPix(double x) {
-        return new Latitud((int) x, latitudMinutos(x), latitudSegundos(x), "N");
+        return new Latitud((int) Math.abs(x), latitudMinutos(x), latitudSegundos(x), "N");
     }
     
     public int longitudMinutos(double x) {
@@ -165,7 +163,7 @@ public class Conversion {
     }
 
     public Longitud longPix(double x) {
-        return new Longitud((int) x, longitudMinutos(x), longitudSegundos(x), "N");
+        return new Longitud((int) Math.abs(x), longitudMinutos(x), longitudSegundos(x), "W");
     }
     
     public PosicionMapa nuevaCoordenada(double x, double y) {
