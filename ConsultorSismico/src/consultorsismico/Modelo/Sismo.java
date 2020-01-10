@@ -14,10 +14,6 @@ public class Sismo {
     private int registro;
     private String fecha;
     private int secuenciaAnual;
-    public static final int POS1= 100;
-    public static final int POS2= 300;
-    public static final int POS3= 600;
-    public static final int POS4= 900;
     
     public Sismo(int registro, int secuenciaAnual, String fecha, Coordenada coordenada, double magnitud, double profundidad) {
         this.coordenada = coordenada;
@@ -101,11 +97,10 @@ public class Sismo {
     }
 
     public void dibujar(Graphics bg) {
-        
         Graphics2D g = (Graphics2D) bg;
         g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
                 RenderingHints.VALUE_ANTIALIAS_ON);
-        if (coordenada.getPosI().getX() < POS1 && coordenada.getPosI().getX() >= 0) {
+        if (coordenada.getPosI().getX() < 100 && coordenada.getPosI().getX() >= 0) {
             g.setColor(new Color(0f, 1f, 1f, .3f));
             g.drawOval(coordenada.getPosI().getX(), coordenada.getPosI().getY(), 45, 45);
             g.fillOval(coordenada.getPosI().getX(), coordenada.getPosI().getY(), 45, 45);

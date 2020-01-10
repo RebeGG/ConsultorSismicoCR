@@ -58,7 +58,7 @@ public class Conversion {
     //Buscar la posición y según una latitud
     // t = x - a / b - a
     public double latitudT(Latitud aux) {
-        return ((aux.latitudToDecimal() + primera.getPosM().getLatitud().getGrados()) / (double)(-segunda.getPosM().getLatitud().getGrados() + primera.getPosM().getLatitud().getGrados()));
+        return ((-aux.latitudToDecimal() + primera.getPosM().getLatitud().getGrados()) / (double)(-segunda.getPosM().getLatitud().getGrados() + primera.getPosM().getLatitud().getGrados()));
     }
 
     //Buscar la latitud en pixeles
