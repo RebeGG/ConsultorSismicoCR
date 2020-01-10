@@ -177,11 +177,11 @@ public class Modelo extends Observable {
         }
         return aux;
     }
-    
+
     public int cantidadSismos() {
         return sismos.size();
     }
-    
+
     public Sismo obtener(int i) {
         return sismos.get(i);
     }
@@ -206,7 +206,6 @@ public class Modelo extends Observable {
     public Modelo obtenerModelo() {
         return this;
     }
-    
 
     public void dibujar(Graphics bg) {
         synchronized (sismos) {
@@ -215,9 +214,9 @@ public class Modelo extends Observable {
             }
         }
     }
-    
 
-    public void update(){
-        
+    public void update() {
+        setChanged();
+        notifyObservers();
     }
 }

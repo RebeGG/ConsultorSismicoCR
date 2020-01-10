@@ -93,9 +93,10 @@ public class Controlador {
                 String fecha = entrada.next();
                 double a = entrada.nextDouble();
                 double b = entrada.nextDouble();
-                int magnitud = entrada.nextInt();
-                int prof = entrada.nextInt();
+                double magnitud = entrada.nextDouble();
+                double prof = entrada.nextDouble();
                 datos.getSismos().add(new Sismo(registro, secAnual, fecha, new Coordenada(conver.coordenadatoPixeles(conver.longPix(a), conver.latPix(b)), conver.nuevaCoordenada(a, b)), magnitud, prof));
+                datos.update();
             }
         } catch (IOException ex) {
 
@@ -108,7 +109,7 @@ public class Controlador {
     }
     
     public void actualizaCoordenadasModel(Point p){
-        datos.setCoordenada(new Coordenada(new PosicionImagen(p.x,p.y), conver.nuevaCoordenada(p.x, p.y)));
+        datos.setCoordenada(new Coordenada(new PosicionImagen(p.x,p.y), conver.nuevaCoordenada(p.y, p.x)));
     }
 
     private Modelo datos;
