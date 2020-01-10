@@ -175,7 +175,7 @@ public class VentanaSeleccion extends javax.swing.JFrame{
 
     private void consultarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarBtnActionPerformed
         try {
-            //controller.consultar(this.Filtro(1), this.Filtro(2));
+            controlador.buscar(this.Filtro(1), this.Filtro(2));
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, "Datos incompletos","CONSULTAR-ERROR",JOptionPane.ERROR_MESSAGE);
         }

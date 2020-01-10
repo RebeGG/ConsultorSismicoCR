@@ -121,20 +121,21 @@ public class PanelMapa extends PanelAplicacion implements Observer{
                 RenderingHints.VALUE_ANTIALIAS_ON);
         
         g.setColor(Color.BLUE.darker());
-                g.setStroke(lineaGuia);
+        g.setStroke(lineaGuia);
                 
-                for(int i = 0; i < 2; i++){
-                    int x = base.getCoordenadas().obtenerCoordenada(i).getPosI().getX();
-                    int y = base.getCoordenadas().obtenerCoordenada(i).getPosI().getY();
-                    g.drawLine(0, y, getWidth(), y);
-                    g.drawLine(x, 0, x, getHeight());
-                    g.drawString(base.getCoordenadas().obtenerCoordenada(i).getPosM().getLongitud().toString(), x + 5, y - 18);
-                    g.drawString(base.getCoordenadas().obtenerCoordenada(i).getPosM().getLatitud().toString(), x + 5, y - 5);
-                }
+        for(int i = 0; i < 2; i++){
+            int x = base.getCoordenadas().obtenerCoordenada(i).getPosI().getX();
+            int y = base.getCoordenadas().obtenerCoordenada(i).getPosI().getY();
+            g.drawLine(0, y, getWidth(), y);
+            g.drawLine(x, 0, x, getHeight());
+            g.drawString(base.getCoordenadas().obtenerCoordenada(i).getPosM().getLongitud().toString(), x + 5, y - 18);
+            g.drawString(base.getCoordenadas().obtenerCoordenada(i).getPosM().getLatitud().toString(), x + 5, y - 5);
+        }
                 
-                if (modelo != null) {
-                    controlador.dibujarModel(g);
-                }
+        if (modelo != null) {
+            controlador.dibujarModel(g);
+        }
+                
 
         // Si se está arrastrando el ratón, se dibuja un "recuadro de selección" para mostrar
         // el rango de arrastre.
