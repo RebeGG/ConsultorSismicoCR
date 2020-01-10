@@ -163,7 +163,7 @@ public class Conversion {
     }
 
     public Longitud longPix(double x) {
-        return new Longitud((int) x, longitudMinutos(x), longitudSegundos(x), "N");
+        return new Longitud((int) Math.abs(x), longitudMinutos(x), longitudSegundos(x), "W");
     }
     
     public PosicionMapa nuevaCoordenada(double x, double y) {
