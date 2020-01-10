@@ -1,17 +1,16 @@
 package consultorsismico.Modelo.tablaModel;
 
+import consultorsismico.Modelo.ConjuntoSismos;
 import consultorsismico.Modelo.Latitud;
 import consultorsismico.Modelo.Longitud;
-import consultorsismico.Modelo.Modelo;
 import consultorsismico.Modelo.Sismo;
-import java.text.DecimalFormat;
 import javax.swing.table.AbstractTableModel;
 
 public class ModeloTablaSismos extends AbstractTableModel {
    
-    private final Modelo listaSismos;
+    private final ConjuntoSismos listaSismos;
     
-    public ModeloTablaSismos(Modelo listaSismos) {
+    public ModeloTablaSismos(ConjuntoSismos listaSismos) {
         this.listaSismos = listaSismos;
     }
 

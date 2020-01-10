@@ -11,8 +11,9 @@ import java.awt.Image;
 import java.awt.Point;
 import java.util.Observable;
 import java.util.Observer;
-import java.awt.Rectangle;
 import java.awt.Dimension;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.RenderingHints;
 import java.awt.Stroke;
 import java.awt.event.MouseAdapter;
@@ -20,6 +21,7 @@ import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 public class PanelMapa extends PanelAplicacion implements Observer{
     
@@ -44,7 +46,7 @@ public class PanelMapa extends PanelAplicacion implements Observer{
     
     PanelMapa(Color fondo, BarraCoordenada estado, Controlador controlador, Image mapa, BufferedImage buffer, MapaBase base){
         super(fondo, buffer);
-        this.modelo = null;
+//        this.modelo = null;
         this.mapa = mapa;
         this.base = base;
         this.controlador = controlador;
@@ -62,6 +64,28 @@ public class PanelMapa extends PanelAplicacion implements Observer{
     public PanelMapa(BarraCoordenada estado, Controlador controlador, Image mapa, BufferedImage buffer, MapaBase base) {
         this(null, estado, controlador, mapa, buffer, base);
     }
+    
+//    @Override
+//    public void ajustarComponentes(){
+//        this.setLayout(new GridBagLayout());
+//        GridBagConstraints gbc = new GridBagConstraints();
+////        gbc.gridx = 0;
+////        gbc.gridy = 0;
+////        gbc.fill = GridBagConstraints.NONE;
+////        this.add(background, gbc);
+//        gbc.gridx = 0;
+//        gbc.gridy = 855;
+//        gbc.gridwidth = 2;
+//        gbc.weighty=0.1;
+//        gbc.fill = GridBagConstraints.VERTICAL;
+//        this.add(new JPanel(), gbc);
+//        gbc.gridx = 855;
+//        gbc.gridy = 0;
+//        gbc.gridheight = 2;
+//        gbc.weightx=0.1;
+//        gbc.fill = GridBagConstraints.VERTICAL;
+//        this.add(new JPanel(), gbc);
+//    }
     
     @Override
     public void init(){
@@ -134,6 +158,11 @@ public class PanelMapa extends PanelAplicacion implements Observer{
                 
         if (modelo != null) {
             controlador.dibujarModel(g);
+        }
+        else{
+            System.out.println("lo recibe null");
+            //esto solo lo pregunta 1 vez, no debería ser, porque este metodo se llama mas veces y funciona para que
+            //dibuje las lineas guias y las lineas del mouse.....
         }
                 
 

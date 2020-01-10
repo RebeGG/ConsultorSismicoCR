@@ -16,6 +16,7 @@ public abstract class PanelAplicacion extends JPanel {
     }
 
     private void configurar(Color fondo) {
+//        ajustarComponentes();
         setBackground(fondo);
         setCursor(Cursor.getPredefinedCursor(Cursor.CROSSHAIR_CURSOR));
     }
@@ -23,6 +24,8 @@ public abstract class PanelAplicacion extends JPanel {
     public PanelAplicacion(BufferedImage buffer) {
         this(null, buffer);
     }
+    
+//    public abstract void ajustarComponentes();
 
     @Override
     public void paint(Graphics g) {
