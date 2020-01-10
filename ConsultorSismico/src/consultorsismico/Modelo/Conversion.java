@@ -58,7 +58,7 @@ public class Conversion {
     //Buscar la posición y según una latitud
     // t = x - a / b - a
     public double latitudT(Latitud aux) {
-        return ((aux.latitudToDecimal() + primera.getPosM().getLatitud().getGrados()) / (-segunda.getPosM().getLatitud().getGrados() + primera.getPosM().getLatitud().getGrados()));
+        return ((aux.latitudToDecimal() + primera.getPosM().getLatitud().getGrados()) / (double)(-segunda.getPosM().getLatitud().getGrados() + primera.getPosM().getLatitud().getGrados()));
     }
 
     //Buscar la latitud en pixeles
@@ -71,7 +71,7 @@ public class Conversion {
     // t = x - a / b - a
     public double longitudT(Longitud aux) {
         double log = aux.longitudToDecimal();
-        return ((log + (primera.getPosM().getLongitud().getGrados())) / (-segunda.getPosM().getLongitud().getGrados() - (-primera.getPosM().getLongitud().getGrados())));
+        return ((log + (primera.getPosM().getLongitud().getGrados())) / (double)(-segunda.getPosM().getLongitud().getGrados() - (-primera.getPosM().getLongitud().getGrados())));
     }
 
     //f(t) = a + t(b-a)
@@ -150,7 +150,7 @@ public class Conversion {
     }
 
     public Latitud latPix(double x) {
-        return new Latitud((int) x, latitudMinutos(x), latitudSegundos(x), "N");
+        return new Latitud((int) Math.abs(x), latitudMinutos(x), latitudSegundos(x), "N");
     }
     
     public int longitudMinutos(double x) {
