@@ -58,7 +58,7 @@ public class VentanaPrincipal extends JFrame implements Observer{
         try {
             JAXBContext ctx = JAXBContext.newInstance(MapaBase.class);
             Unmarshaller mrs = ctx.createUnmarshaller();
-            this.base = (MapaBase) mrs.unmarshal(new File("./map.xml"));
+            this.base = (MapaBase) mrs.unmarshal(new File("src/configuracion/map.xml"));
             
         } catch (JAXBException ex) {
             System.err.printf("Excepción: '%s'%n", ex.getMessage());

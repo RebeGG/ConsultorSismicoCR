@@ -78,18 +78,7 @@ public class Controlador {
         System.out.printf("Suprimiendo: %s..%n", actual);
         datos.deleteObserver(actual);
     }
-
-    public void unMarshallXML() {
-        try {
-            JAXBContext ctx = JAXBContext.newInstance(MapaBase.class);
-            Unmarshaller mrs = ctx.createUnmarshaller();
-            base = (MapaBase) mrs.unmarshal(new File("../map.xml"));
-        } catch (JAXBException ex) {
-            System.err.printf("Excepción: '%s'%n", ex.getMessage());
-        }
-        
-    }
-
+    
     public void cerrarAplicacion() {
         System.out.println("Aplicación finalizada normalmente..");
         System.exit(0);
