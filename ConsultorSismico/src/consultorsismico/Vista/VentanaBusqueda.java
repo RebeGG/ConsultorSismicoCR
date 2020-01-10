@@ -6,9 +6,9 @@ import java.awt.Color;
 import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 
-public class VentanaSeleccion extends javax.swing.JFrame{
+public class VentanaBusqueda extends javax.swing.JFrame{
 
-    public VentanaSeleccion(String titulo, Controlador controlador) {
+    public VentanaBusqueda(String titulo, Controlador controlador) {
         super(titulo);
         this.controlador = controlador;
         initComponents();
@@ -232,20 +232,21 @@ public class VentanaSeleccion extends javax.swing.JFrame{
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VentanaSeleccion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaBusqueda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VentanaSeleccion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaBusqueda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VentanaSeleccion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaBusqueda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VentanaSeleccion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaBusqueda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VentanaSeleccion("Consultar Sismos",new Controlador()).setVisible(true);
+                new VentanaBusqueda("Consultar Sismos",new Controlador()).setVisible(true);
             }
         });
     }
@@ -254,6 +255,7 @@ public class VentanaSeleccion extends javax.swing.JFrame{
         setVisible(true);
     }
     
+    //Método que genera 2 Sismos que servirán de filtro de búsqueda
     public Sismo Filtro(int orden) throws Exception{
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
         String fecha;

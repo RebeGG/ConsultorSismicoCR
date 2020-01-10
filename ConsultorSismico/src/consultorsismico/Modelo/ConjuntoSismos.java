@@ -1,6 +1,5 @@
 package consultorsismico.Modelo;
 
-import consultorsismico.Modelo.Sismo;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;

@@ -6,12 +6,10 @@ import consultorsismico.Modelo.MapaBase;
 import consultorsismico.Modelo.Modelo;
 import consultorsismico.Modelo.PosicionImagen;
 import consultorsismico.Modelo.Sismo;
-import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Point;
 import java.io.File;
 import java.io.IOException;
-import java.util.List;
 import java.util.Observer;
 import java.util.Scanner;
 import javax.xml.bind.JAXBContext;
@@ -99,16 +97,15 @@ public class Controlador {
                 double magnitud = entrada.nextDouble();
                 double prof = entrada.nextDouble();
                 datos.agregar(new Sismo(registro, secAnual, fecha, new Coordenada(conver.coordenadatoPixeles(conver.longPix(a), conver.latPix(b)), conver.nuevaCoordenada(a, b)), magnitud, prof));
-                //datos.getSismos().add(new Sismo(registro, secAnual, fecha, new Coordenada(conver.coordenadatoPixeles(conver.longPix(a), conver.latPix(b)), conver.nuevaCoordenada(a, b)), magnitud, prof));
             }
-            datos.setlistaBusqueda(datos.getSismos());
+            datos.setListaBusqueda(datos.getSismos());
         } catch (IOException ex) {
 
         }
     }
     
     public void buscar(Sismo primero, Sismo segundo) {
-        datos.setlistaBusqueda(datos.buscar(primero, segundo));
+        datos.setListaBusqueda(datos.buscar(primero, segundo));
     }
     
     public void actualizaCoordenadasModel(Point p){

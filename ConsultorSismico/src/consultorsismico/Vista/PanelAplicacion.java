@@ -1,35 +1,41 @@
 package consultorsismico.Vista;
 
+import consultorsismico.Modelo.MapaBase;
 import java.awt.Color;
 import java.awt.Cursor;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 public abstract class PanelAplicacion extends JPanel {
     private BufferedImage buffer;
+    private MapaBase base;
 
     
-    public PanelAplicacion(Color fondo, BufferedImage buffer) {
-        this.buffer = buffer;
+    public PanelAplicacion(Color fondo, MapaBase base) {
+        this.base = base;
+        this.buffer = new BufferedImage(base.getImagen().getDimension().getAncho(),base.getImagen().getDimension().getAlto(),BufferedImage.TYPE_INT_RGB);
         configurar(fondo);
     }
 
     private void configurar(Color fondo) {
-//        ajustarComponentes();
         setBackground(fondo);
         setCursor(Cursor.getPredefinedCursor(Cursor.CROSSHAIR_CURSOR));
+        setPreferredSize(new Dimension(base.getImagen().getDimension().getAncho(), base.getImagen().getDimension().getAncho()));
     }
 
-    public PanelAplicacion(BufferedImage buffer) {
-        this(null, buffer);
+    public PanelAplicacion(MapaBase base) {
+        this(null, base);
     }
-    
-//    public abstract void ajustarComponentes();
 
     @Override
     public void paint(Graphics g) {
+        ImageIcon wallpaper = new ImageIcon(getClass().getResource(base.getImagen().getUrl()));
         Graphics graph = buffer.getGraphics();
+        graph.drawImage(wallpaper.getImage(), 0, 0, base.getImagen().getDimension().getAncho(), base.getImagen().getDimension().getAlto(), null);
+        setOpaque(false);
         super.paint(graph);
         redibujar(graph);
         g.drawImage(buffer, 0, 0, null);

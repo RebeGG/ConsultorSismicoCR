@@ -4,19 +4,14 @@ import consultorsismico.Controlador.Controlador;
 import consultorsismico.Modelo.MapaBase;
 import consultorsismico.Modelo.Modelo;
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.IOException;
 import java.util.Observable;
 import java.util.Observer;
-import java.awt.Image;
-import javax.imageio.ImageIO;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -31,19 +26,17 @@ import javax.xml.bind.Unmarshaller;
 public class VentanaPrincipal extends JFrame implements Observer{
 
     private BarraCoordenada coordenadas;
-    private BufferedImage buffer;
     private Controlador controlador;
-    private Image mapaImage;
     private JMenu menuVentana;
     private JMenu menuSeleccion;
     private JMenuBar menuPrincipal;
     private JMenuItem itemTabla;
     private JMenuItem itemArchivo;
-    private JMenuItem itemSeleccion;
+    private JMenuItem itemBusqueda;
     private JMenuItem itemSalir;
     private PanelAplicacion panelPrincipal;
     private Modelo modelo = null;
-    private VentanaSeleccion ventanaSeleccion;
+    private VentanaBusqueda ventanaBusqueda;
     private VentanaTabla ventanaTabla;
     private MapaBase base;
 
@@ -59,7 +52,7 @@ public class VentanaPrincipal extends JFrame implements Observer{
         }
         this.controlador = controlador;
         this.ventanaTabla = new VentanaTabla("Datos Tabulados",this.controlador);
-        this.ventanaSeleccion = new VentanaSeleccion("Consultar Sismos",this.controlador);
+        this.ventanaBusqueda = new VentanaBusqueda("Consultar Sismos",this.controlador);
         configurar();
     }
 
@@ -80,18 +73,11 @@ public class VentanaPrincipal extends JFrame implements Observer{
     }
 
     private void ajustarComponentes(Container contenedor) {
-        
-        this.buffer = new BufferedImage(base.getImagen().getDimension().getAncho(),base.getImagen().getDimension().getAlto(),BufferedImage.TYPE_INT_RGB);
-        try {
-            mapaImage = ImageIO.read(getClass().getResourceAsStream(base.getImagen().getUrl()));
-        } catch (IOException ex) {
-            JOptionPane.showMessageDialog(this, "Mapa no se cargó correctamente","IMAGEN-ERROR",JOptionPane.ERROR_MESSAGE);
-        }
 
         contenedor.setLayout(new BorderLayout());
       
         contenedor.add(BorderLayout.PAGE_END, coordenadas = new BarraCoordenada());
-        contenedor.add(BorderLayout.CENTER, panelPrincipal = new PanelMapa(coordenadas , controlador, mapaImage, buffer, base));
+        contenedor.add(BorderLayout.CENTER, panelPrincipal = new PanelMapa(coordenadas , controlador, base));
         contenedor.add(new JScrollPane(panelPrincipal, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
                 JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS));
         
@@ -107,7 +93,7 @@ public class VentanaPrincipal extends JFrame implements Observer{
         menuVentana.add(itemSalir = new JMenuItem("Salir"));
         
         menuPrincipal.add(menuSeleccion = new JMenu("Selección"));
-        menuSeleccion.add(itemSeleccion = new JMenuItem("Búsqueda"));
+        menuSeleccion.add(itemBusqueda = new JMenuItem("Búsqueda"));
         menuSeleccion.add(itemTabla = new JMenuItem("Tabla Coordenadas"));
         setJMenuBar(menuPrincipal);
 
@@ -128,8 +114,8 @@ public class VentanaPrincipal extends JFrame implements Observer{
             cerrarVentana();
         });
 
-        itemSeleccion.addActionListener((ActionEvent e) -> {
-            ventanaSeleccion.init();
+        itemBusqueda.addActionListener((ActionEvent e) -> {
+            ventanaBusqueda.init();
         });
         
         itemTabla.addActionListener((ActionEvent e) -> {
@@ -153,16 +139,7 @@ public class VentanaPrincipal extends JFrame implements Observer{
 
     @Override
     public void update(Observable o, Object arg) {
-//        modelo = (Modelo) o;
-        System.out.println("Update Venatna Principal");
         modelo = (Modelo) o;
-        if(modelo != null){
-            System.out.println("Modelo no es nulo");
-        }
-        else{
-            System.out.println("Modelo es nulo");
-        }
         panelPrincipal.repaint();
-        System.out.println("Se llamó repaint desde Ventana Principal");
     }
 }
