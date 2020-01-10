@@ -45,7 +45,7 @@ public class VentanaTabla extends JFrame implements Observer{
 
         controlDesplazamientoTabla = new JScrollPane(
                 tablaSismos = new TablaSismos(
-                        new ModeloTablaSismos(controlador.getDatos()),
+                        new ModeloTablaSismos(controlador.getDatos().obtenerModeloTabla()),
                         new ModeloColumnas())
         );
 
@@ -55,7 +55,7 @@ public class VentanaTabla extends JFrame implements Observer{
     }
 
     public void init() {
-        controlador.registrar(this);
+        controlador.registrarTabla(this);
         setVisible(true);
     }
 

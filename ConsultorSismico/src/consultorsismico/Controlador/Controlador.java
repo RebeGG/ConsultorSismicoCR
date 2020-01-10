@@ -57,6 +57,10 @@ public class Controlador {
     public void registrar(Observer obs) {
         datos.addObserver(obs);
     }
+    
+    public void registrarTabla(Observer obs) {
+        datos.obtenerModeloTabla().addObserver(obs);
+    }
 
     public void suprimir(Observer actual) {
         System.out.printf("Suprimiendo: %s..%n", actual);
@@ -93,16 +97,17 @@ public class Controlador {
                 double b = entrada.nextDouble();
                 double magnitud = entrada.nextDouble();
                 double prof = entrada.nextDouble();
-                datos.getSismos().add(new Sismo(registro, secAnual, fecha, new Coordenada(conver.coordenadatoPixeles(conver.longPix(a), conver.latPix(b)), conver.nuevaCoordenada(a, b)), magnitud, prof));
+                datos.agregar(new Sismo(registro, secAnual, fecha, new Coordenada(conver.coordenadatoPixeles(conver.longPix(a), conver.latPix(b)), conver.nuevaCoordenada(a, b)), magnitud, prof));
+                //datos.getSismos().add(new Sismo(registro, secAnual, fecha, new Coordenada(conver.coordenadatoPixeles(conver.longPix(a), conver.latPix(b)), conver.nuevaCoordenada(a, b)), magnitud, prof));
             }
+            datos.setlistaBusqueda(datos.getSismos());
         } catch (IOException ex) {
 
         }
-
     }
-
+    
     public void buscar(Sismo primero, Sismo segundo) {
-        datos.setSismos(datos.buscar(primero, segundo));
+        datos.setlistaBusqueda(datos.buscar(primero, segundo));
     }
     
     public void actualizaCoordenadasModel(Point p){

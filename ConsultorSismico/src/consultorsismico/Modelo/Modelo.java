@@ -12,6 +12,7 @@ public class Modelo extends Observable {
 
     private Sismo sismo;
     private List<Sismo> sismos;
+    private ConjuntoSismos listaBusqueda;
     private Coordenada coordenada;
 
     public Modelo(List sismos) {
@@ -21,11 +22,13 @@ public class Modelo extends Observable {
     public Modelo(List<Sismo> sismos, Coordenada coordenada) {
         this.sismos = sismos;
         this.coordenada = coordenada;
+        this.listaBusqueda = new ConjuntoSismos(sismos);
     }
 
     public Modelo() {
         this.sismo = null;
         this.sismos = new ArrayList<>();
+        this.listaBusqueda = new ConjuntoSismos();
     }
 
     public Sismo getSismo() {
@@ -44,6 +47,14 @@ public class Modelo extends Observable {
 
     public void setSismos(List<Sismo> sismos) {
         this.sismos = sismos;
+        setChanged();
+        notifyObservers();
+    }
+
+    public void setlistaBusqueda(List<Sismo> sismos) {
+        listaBusqueda.setSismos(sismos);
+        setChanged();
+        notifyObservers();
     }
 
     public Coordenada getCoordenada() {
@@ -75,7 +86,7 @@ public class Modelo extends Observable {
     }
 
     public LocalDate date(String fecha) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d-MM-yyyy");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d-M-yyyy");
         return LocalDate.parse(fecha, formatter);
     }
 
@@ -177,34 +188,9 @@ public class Modelo extends Observable {
         }
         return aux;
     }
-    
-    public int cantidadSismos() {
-        return sismos.size();
-    }
-    
-    public Sismo obtener(int i) {
-        return sismos.get(i);
-    }
 
-    public void borrar() {
-        sismos.clear();
-
-        setChanged();
-        notifyObservers();
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder r = new StringBuilder("[\n");
-        for (Sismo s : sismos) {
-            r.append(String.format("\t%s,%n", s));
-        }
-        r.append("]");
-        return r.toString();
-    }
-
-    public Modelo obtenerModelo() {
-        return this;
+    public ConjuntoSismos obtenerModeloTabla() {
+        return listaBusqueda.obtenerModelo();
     }
 
     public void dibujar(Graphics bg) {
