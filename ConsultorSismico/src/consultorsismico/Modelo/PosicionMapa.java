@@ -2,6 +2,19 @@ package consultorsismico.Modelo;
 
 import javax.xml.bind.annotation.XmlElement;
 
+//  Universidad Nacional
+//  Facultad de Ciencias Exactas y Naturales
+//  Escuela de Informática
+//  
+//      I Proyecto
+//    (PosicionMapa)
+//
+//  Autores: Joel Agüero Campos
+//           Rebecca Garita Gutiérrez
+//           María Fernanda González Arias
+//
+//  III Ciclo 2019
+
 public class PosicionMapa {
     
     private Latitud latitud;

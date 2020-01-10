@@ -2,9 +2,21 @@ package consultorsismico.Modelo;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
+
+//  Universidad Nacional
+//  Facultad de Ciencias Exactas y Naturales
+//  Escuela de Informática
+//  
+//      I Proyecto
+//       (Sismo)
+//
+//  Autores: Joel Agüero Campos
+//           Rebecca Garita Gutiérrez
+//           María Fernanda González Arias
+//
+//  III Ciclo 2019
 
 public class Sismo {
 
@@ -98,9 +110,16 @@ public class Sismo {
 
     public void dibujar(Graphics2D g) {
         
-        //Graphics2D g = (Graphics2D) bg;
         g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
                 RenderingHints.VALUE_ANTIALIAS_ON);
+        if (coordenada.getPosI().getX() < 0 && coordenada.getPosI().getX() >= -600) {
+            g.setColor(new Color(1f, .9f, .1f, .3f));
+            g.drawOval(coordenada.getPosI().getX(), coordenada.getPosI().getY(), 45, 45);
+            g.fillOval(coordenada.getPosI().getX(), coordenada.getPosI().getY(), 45, 45);
+            g.setColor(Color.BLACK);
+            g.setFont(new Font("TimesRoman", Font.BOLD, 12));
+            g.drawString(String.valueOf(magnitud), coordenada.getPosI().getX() + 14, coordenada.getPosI().getY() + 26);
+        }
         if (coordenada.getPosI().getX() < 100 && coordenada.getPosI().getX() >= 0) {
             g.setColor(new Color(0f, 1f, 1f, .3f));
             g.drawOval(coordenada.getPosI().getX(), coordenada.getPosI().getY(), 45, 45);

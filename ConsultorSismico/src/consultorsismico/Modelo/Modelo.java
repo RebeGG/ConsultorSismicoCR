@@ -8,6 +8,19 @@ import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
+//  Universidad Nacional
+//  Facultad de Ciencias Exactas y Naturales
+//  Escuela de Informática
+//  
+//      I Proyecto
+//       (Modelo)
+//
+//  Autores: Joel Agüero Campos
+//           Rebecca Garita Gutiérrez
+//           María Fernanda González Arias
+//
+//  III Ciclo 2019
+
 public class Modelo extends Observable {
 
     private Sismo sismo;
@@ -194,8 +207,8 @@ public class Modelo extends Observable {
     }
 
     public void dibujar(Graphics2D bg) {
-        synchronized (sismos) {
-            for (Sismo m : sismos) {
+        synchronized (listaBusqueda.getSismos()) {
+            for (Sismo m : listaBusqueda.getSismos()) {
                 m.dibujar(bg);
             }
         }

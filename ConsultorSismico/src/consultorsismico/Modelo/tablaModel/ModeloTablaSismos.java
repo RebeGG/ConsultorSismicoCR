@@ -6,6 +6,19 @@ import consultorsismico.Modelo.Longitud;
 import consultorsismico.Modelo.Sismo;
 import javax.swing.table.AbstractTableModel;
 
+//  Universidad Nacional
+//  Facultad de Ciencias Exactas y Naturales
+//  Escuela de Informática
+//  
+//      I Proyecto
+//     (ModeloTablaSismos)
+//
+//  Autores: Joel Agüero Campos
+//           Rebecca Garita Gutiérrez
+//           María Fernanda González Arias
+//
+//  III Ciclo 2019
+
 public class ModeloTablaSismos extends AbstractTableModel {
    
     private final ConjuntoSismos listaSismos;
