@@ -44,6 +44,7 @@ public class PanelMapa extends PanelAplicacion implements Observer{
     
     PanelMapa(Color fondo, BarraCoordenada estado, Controlador controlador, Image mapa, BufferedImage buffer, MapaBase base){
         super(fondo, buffer);
+        this.modelo = null;
         this.mapa = mapa;
         this.base = base;
         this.controlador = controlador;
@@ -72,7 +73,6 @@ public class PanelMapa extends PanelAplicacion implements Observer{
             public void mousePressed(MouseEvent e) {
                 posicionInicio = posicionRaton = e.getPoint();
                 botonOprimido = true;
-                // botonDerecho = ((e.getModifiersEx() & MouseEvent.BUTTON2) == MouseEvent.BUTTON2);
                 botonDerecho = e.isMetaDown();
                 controlador.actualizaCoordenadasModel(posicionRaton);
             }

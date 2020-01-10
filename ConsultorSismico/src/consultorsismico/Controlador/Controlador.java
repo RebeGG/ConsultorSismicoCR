@@ -101,8 +101,8 @@ public class Controlador {
 
     }
 
-    public List<Sismo> buscar(Sismo primero, Sismo segundo) {
-        return datos.buscar(primero, segundo);
+    public void buscar(Sismo primero, Sismo segundo) {
+        datos.setSismos(datos.buscar(primero, segundo));
     }
     
     public void actualizaCoordenadasModel(Point p){

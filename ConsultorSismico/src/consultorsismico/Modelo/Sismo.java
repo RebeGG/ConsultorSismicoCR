@@ -33,11 +33,11 @@ public class Sismo {
     }
     
     public Object[] toArray() {
-        Object[] r = new Object[4];
+        Object[] r = new Object[7];
         r[0] = getRegistro();
         r[1] = getSecuenciaAnual();
         r[2] = getFecha();
-        r[2] = getCoordenada().getPosM().getLatitud();
+        r[3] = getCoordenada().getPosM().getLatitud();
         r[4] = getCoordenada().getPosM().getLongitud();
         r[5] = getMagnitud();
         r[6] = getProfundidad();

@@ -106,8 +106,8 @@ public class VentanaPrincipal extends JFrame implements Observer{
         menuVentana.add(itemArchivo = new JMenuItem("Archivo"));
         menuVentana.add(itemSalir = new JMenuItem("Salir"));
         
-        menuPrincipal.add(menuSeleccion = new JMenu("Seleccion"));
-        menuSeleccion.add(itemSeleccion = new JMenuItem("Consultar Sismos"));
+        menuPrincipal.add(menuSeleccion = new JMenu("Selección"));
+        menuSeleccion.add(itemSeleccion = new JMenuItem("Búsqueda"));
         menuSeleccion.add(itemTabla = new JMenuItem("Tabla Coordenadas"));
         setJMenuBar(menuPrincipal);
 
@@ -149,7 +149,6 @@ public class VentanaPrincipal extends JFrame implements Observer{
         setVisible(true);
         coordenadas.init();
         panelPrincipal.init();
-        
     }
 
     @Override

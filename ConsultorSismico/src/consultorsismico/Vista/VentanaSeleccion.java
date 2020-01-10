@@ -223,34 +223,41 @@ public class VentanaSeleccion extends javax.swing.JFrame{
     public Sismo Filtro(int orden) throws Exception{
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
         String fecha;
-        Sismo sismo = new Sismo();
         Double magnitud;
-        if(cualquierMagnitud.isSelected()){
-            magnitud = 10.10;
-            sismo.setMagnitud(magnitud);
-        }
+        Sismo sismo = new Sismo();
         switch(orden){
             case 1: {
                 fecha = dateFormat.format(fechaInicial.getDate());
                 sismo.setFecha(fecha);
-                magnitud = Double.parseDouble(magnitudMin.getText());
-                if(!magnitud.isNaN() && magnitud > 0 && magnitud <= 10){
+                if(cualquierMagnitud.isSelected()){
+                    magnitud = 10.10;
                     sismo.setMagnitud(magnitud);
                 }
                 else{
-                    throw new Exception("Datos no corresponden a parámetros aceptados");
+                    magnitud = Double.parseDouble(magnitudMin.getText());
+                    if(!magnitud.isNaN() && magnitud > 0 && magnitud <= 10){
+                        sismo.setMagnitud(magnitud);
+                    }
+                    else{
+                        throw new Exception("Datos no corresponden a parámetros aceptados");
+                    }
                 }
-                
             }break;
             case 2:{
                 fecha = dateFormat.format(fechaFinal.getDate());
                 sismo.setFecha(fecha);
-                magnitud = Double.parseDouble(magnitudMax.getText());
-                if(!magnitud.isNaN() && magnitud > 0 && magnitud <= 10){
+                if(cualquierMagnitud.isSelected()){
+                    magnitud = 10.10;
                     sismo.setMagnitud(magnitud);
                 }
                 else{
-                    throw new Exception("Datos no corresponden a parámetros aceptados");
+                    magnitud = Double.parseDouble(magnitudMax.getText());
+                    if(!magnitud.isNaN() && magnitud > 0 && magnitud <= 10){
+                        sismo.setMagnitud(magnitud);
+                    }
+                    else{
+                        throw new Exception("Datos no corresponden a parámetros aceptados");
+                    }
                 }
             }break;
         }
