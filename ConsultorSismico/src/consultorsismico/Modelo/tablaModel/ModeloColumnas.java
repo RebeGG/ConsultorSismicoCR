@@ -58,6 +58,6 @@ public class ModeloColumnas extends DefaultTableColumnModel{
         "Registro", "Secuencia Anual", "Fecha", "Latitud", "Longitud", "Magnitud", "Profundidad"
     };
     private static final int[] ANCHO_COLUMNA = {
-        120, 130, 150, 150, 150, 120, 120
+        95, 100, 110, 110, 110, 95, 95
     };
 }

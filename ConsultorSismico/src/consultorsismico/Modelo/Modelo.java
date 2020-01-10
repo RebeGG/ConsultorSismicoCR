@@ -72,6 +72,8 @@ public class Modelo extends Observable {
     //PARA USAR ESTE AGREGAR HAY QUE PRIMERO CREAR LAS COORDENADAS
     public void agregar(int registro, int secuenciaAnual, String fecha, Coordenada coordenada, double magnitud, double profundidad) {
         agregar(new Sismo(registro, secuenciaAnual, fecha, coordenada, magnitud, profundidad));
+        setChanged();
+        notifyObservers();
     }
 
     public LocalDate date(String fecha) {
