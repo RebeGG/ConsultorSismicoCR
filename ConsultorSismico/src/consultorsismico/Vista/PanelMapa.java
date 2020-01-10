@@ -44,7 +44,6 @@ public class PanelMapa extends PanelAplicacion implements Observer{
     
     PanelMapa(Color fondo, BarraCoordenada estado, Controlador controlador, Image mapa, BufferedImage buffer, MapaBase base){
         super(fondo, buffer);
-//        this.modelo = modelo;
         this.mapa = mapa;
         this.base = base;
         this.controlador = controlador;
@@ -56,6 +55,7 @@ public class PanelMapa extends PanelAplicacion implements Observer{
         background.setSize(base.getImagen().getDimension().getAncho(), base.getImagen().getDimension().getAncho());
         this.add(background);
         setPreferredSize(new Dimension(base.getImagen().getDimension().getAncho(), base.getImagen().getDimension().getAncho()));
+        controlador.registrar(this);
     }
     
     public PanelMapa(BarraCoordenada estado, Controlador controlador, Image mapa, BufferedImage buffer, MapaBase base) {
@@ -74,33 +74,32 @@ public class PanelMapa extends PanelAplicacion implements Observer{
                 botonOprimido = true;
                 // botonDerecho = ((e.getModifiersEx() & MouseEvent.BUTTON2) == MouseEvent.BUTTON2);
                 botonDerecho = e.isMetaDown();
-                //controlador.actualizar(posicionRaton);
+                controlador.actualizaCoordenadasModel(posicionRaton);
             }
 
             @Override
             public void mouseReleased(MouseEvent e) {
                 posicionRaton = e.getPoint();
                 botonOprimido = false;
-
-                //controlador.actualizar(posicionRaton);
+                controlador.actualizaCoordenadasModel(posicionRaton);
             }
 
             @Override
             public void mouseEntered(MouseEvent e) {
                 posicionRaton = e.getPoint();
-                //controlador.actualizar(posicionRaton);
+                controlador.actualizaCoordenadasModel(posicionRaton);
             }
 
             @Override
             public void mouseDragged(MouseEvent e) {
                 posicionRaton = e.getPoint();
-                //controlador.actualizar(posicionRaton);
+                controlador.actualizaCoordenadasModel(posicionRaton);
             }
 
             @Override
             public void mouseMoved(MouseEvent e) {
                 posicionRaton = e.getPoint();
-                //controlador.actualizar(posicionRaton);
+                controlador.actualizaCoordenadasModel(posicionRaton);
             }
 
         };
@@ -129,15 +128,13 @@ public class PanelMapa extends PanelAplicacion implements Observer{
                     int y = base.getCoordenadas().obtenerCoordenada(i).getPosI().getY();
                     g.drawLine(0, y, getWidth(), y);
                     g.drawLine(x, 0, x, getHeight());
-                    //g.drawString(base.getCoordenadas().obtenerCoordenada(i).getPosM().toString(), x + 5, y - 10);
                     g.drawString(base.getCoordenadas().obtenerCoordenada(i).getPosM().getLongitud().toString(), x + 5, y - 18);
                     g.drawString(base.getCoordenadas().obtenerCoordenada(i).getPosM().getLatitud().toString(), x + 5, y - 5);
                 }
                 
-//                if (modelo != null) {
-//                   // modelo.dibujar(g);
-                     // controlador.dibujarSismos(g);
-//                }
+                if (modelo != null) {
+                    controlador.dibujarModel(g);
+                }
 
         // Si se está arrastrando el ratón, se dibuja un "recuadro de selección" para mostrar
         // el rango de arrastre.
@@ -162,7 +159,9 @@ public class PanelMapa extends PanelAplicacion implements Observer{
             g.drawLine(posicionRaton.x, 0, posicionRaton.x, getSize().height);
         }
 
-        //estado.mostrarMensaje(modelo.getCoordenada().toString());
+        if (modelo != null) {
+            estado.mostrarMensaje(modelo.getCoordenada().getPosM().toString());
+        }
     }      
     
     @Override

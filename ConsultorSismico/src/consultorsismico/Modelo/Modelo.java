@@ -206,7 +206,6 @@ public class Modelo extends Observable {
     public Modelo obtenerModelo() {
         return this;
     }
-    
 
     public void dibujar(Graphics bg) {
         synchronized (sismos) {
@@ -216,7 +215,6 @@ public class Modelo extends Observable {
         }
     }
     
-
     public void update(){
         
     }

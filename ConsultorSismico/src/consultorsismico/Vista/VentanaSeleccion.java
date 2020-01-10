@@ -51,10 +51,10 @@ public class VentanaSeleccion extends javax.swing.JFrame{
         magnitudMinLbl.setText("Magnitud Mínima: ");
 
         tituloLbl.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
-        tituloLbl.setText("Consultar");
+        tituloLbl.setText("Buscar");
 
         consultarBtn.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        consultarBtn.setText("Consultar");
+        consultarBtn.setText("Buscar");
         consultarBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 consultarBtnActionPerformed(evt);
@@ -76,11 +76,6 @@ public class VentanaSeleccion extends javax.swing.JFrame{
 
         cualquierMagnitud.setBackground(new java.awt.Color(79, 190, 230));
         cualquierMagnitud.setText("Cualquier Magnitud");
-        cualquierMagnitud.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cualquierMagnitudActionPerformed(evt);
-            }
-        });
 
         fechaInicial.setMaxSelectableDate(new java.util.Date(1580194872000L));
 
@@ -96,25 +91,6 @@ public class VentanaSeleccion extends javax.swing.JFrame{
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(consultarBtn)
-                .addGap(159, 159, 159))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(139, 139, 139)
-                        .addComponent(tituloLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(magnitudMaxLbl1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(magnitudMaxLbl2, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(fechaInicial, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
-                            .addComponent(fechaFinal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -138,6 +114,25 @@ public class VentanaSeleccion extends javax.swing.JFrame{
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(cualquierMagnitud)
                         .addGap(38, 38, 38))))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(magnitudMaxLbl1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(magnitudMaxLbl2, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(fechaInicial, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
+                            .addComponent(fechaFinal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(157, 157, 157)
+                        .addComponent(consultarBtn)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(156, 156, 156)
+                .addComponent(tituloLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -170,9 +165,9 @@ public class VentanaSeleccion extends javax.swing.JFrame{
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(magnitudMaxLbl2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(fechaFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25)
+                .addGap(37, 37, 37)
                 .addComponent(consultarBtn)
-                .addGap(23, 23, 23))
+                .addContainerGap())
         );
 
         pack();
@@ -185,11 +180,6 @@ public class VentanaSeleccion extends javax.swing.JFrame{
             JOptionPane.showMessageDialog(this, "Datos incompletos","CONSULTAR-ERROR",JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_consultarBtnActionPerformed
-
-    private void cualquierMagnitudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cualquierMagnitudActionPerformed
-//        this.magnitudMin.setEnabled(false);
-//        this.magnitudMax.setEnabled(false);
-    }//GEN-LAST:event_cualquierMagnitudActionPerformed
 
     /**
      * @param args the command line arguments

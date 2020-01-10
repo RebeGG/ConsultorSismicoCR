@@ -22,21 +22,6 @@ public class RenderizadorCelda extends DefaultTableCellRenderer {
         Component c = (JComponent) super.getTableCellRendererComponent(table, value,
                 isSelected, hasFocus,
                 row, column);
-
-//        Color color, colorFondo;
-//        if (isSelected) {
-//            color = Color.BLUE;
-//            colorFondo = COLOR_FILA_SELECCIONADA;
-//        } else if (row % 2 == 0) {
-//            color = Color.BLACK;
-//            colorFondo = COLOR_FILA_PAR;
-//        } else {
-//            color = Color.BLACK;
-//            colorFondo = COLOR_FILA_IMPAR;
-//        }
-//        c.setForeground(color);
-//        c.setBackground(colorFondo);
-//
         return c;
     }
 

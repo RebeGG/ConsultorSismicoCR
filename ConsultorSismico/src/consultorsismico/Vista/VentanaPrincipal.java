@@ -68,10 +68,6 @@ public class VentanaPrincipal extends JFrame implements Observer{
         pack();
         setResizable(true);
         setPreferredSize(new Dimension (base.getImagen().getDimension().getAncho(),base.getImagen().getDimension().getAlto()));
-        //int x = base.getImagen().getDimension().getAncho() + 25;
-        //int y =  base.getImagen().getDimension().getAlto() + 60;
-        //setSize(x, y);
-        //setMinimumSize(new Dimension(x,y));
         setLocationRelativeTo(null);
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         addWindowListener(new WindowAdapter() {
@@ -121,7 +117,7 @@ public class VentanaPrincipal extends JFrame implements Observer{
             int seleccion = selectorArchivos.showOpenDialog(panelPrincipal);
             if(seleccion == JFileChooser.APPROVE_OPTION){
                 File archivo = selectorArchivos.getSelectedFile();
-                //controlador.leerArchivo(archivo);
+                controlador.leerTxt(archivo);
             }
             else{
                 JOptionPane.showMessageDialog(this, "No se ha seleccionado ningún archivo","ARCHIVO-ERROR",JOptionPane.ERROR_MESSAGE);
@@ -131,8 +127,6 @@ public class VentanaPrincipal extends JFrame implements Observer{
         itemSalir.addActionListener((ActionEvent e) -> {
             cerrarVentana();
         });
- 
-//        itemVentana.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, ActionEvent.CTRL_MASK));
 
         itemSeleccion.addActionListener((ActionEvent e) -> {
             ventanaSeleccion.init();
@@ -153,9 +147,9 @@ public class VentanaPrincipal extends JFrame implements Observer{
     public void init() {
         controlador.registrar(this);
         setVisible(true);
-        panelPrincipal.init();
         coordenadas.init();
-        //controlador.iniciarModelo();
+        panelPrincipal.init();
+        
     }
 
     @Override
