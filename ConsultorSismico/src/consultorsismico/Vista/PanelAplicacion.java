@@ -9,6 +9,19 @@ import java.awt.image.BufferedImage;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
+//  Universidad Nacional
+//  Facultad de Ciencias Exactas y Naturales
+//  Escuela de Informática
+//  
+//      I Proyecto
+//   (PanelAplicacion)
+//
+//  Autores: Joel Agüero Campos
+//           Rebecca Garita Gutiérrez
+//           María Fernanda González Arias
+//
+//  III Ciclo 2019
+
 public abstract class PanelAplicacion extends JPanel {
     private BufferedImage buffer;
     private MapaBase base;

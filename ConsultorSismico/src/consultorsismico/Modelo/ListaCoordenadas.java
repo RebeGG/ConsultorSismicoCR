@@ -4,6 +4,19 @@ import java.util.List;
 import java.util.ArrayList;
 import javax.xml.bind.annotation.XmlElement;
 
+//  Universidad Nacional
+//  Facultad de Ciencias Exactas y Naturales
+//  Escuela de Informática
+//  
+//      I Proyecto
+//  (ListaCoordenadas)
+//
+//  Autores: Joel Agüero Campos
+//           Rebecca Garita Gutiérrez
+//           María Fernanda González Arias
+//
+//  III Ciclo 2019
+
 public class ListaCoordenadas {
     @XmlElement(name = "coordinate")
     private final List<Coordenada> coordenadas;

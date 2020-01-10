@@ -10,6 +10,19 @@ import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumnModel;
 import javax.swing.table.TableModel;
 
+//  Universidad Nacional
+//  Facultad de Ciencias Exactas y Naturales
+//  Escuela de Informática
+//  
+//      I Proyecto
+//     (TablaSismos)
+//
+//  Autores: Joel Agüero Campos
+//           Rebecca Garita Gutiérrez
+//           María Fernanda González Arias
+//
+//  III Ciclo 2019
+
 public class TablaSismos extends JTable{
     public TablaSismos(TableModel modeloDatos, TableColumnModel modeloColumnas) {
         super(modeloDatos, modeloColumnas);

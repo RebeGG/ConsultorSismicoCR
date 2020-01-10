@@ -2,6 +2,19 @@ package consultorsismico.Modelo;
 
 import javax.xml.bind.annotation.XmlElement;
 
+//  Universidad Nacional
+//  Facultad de Ciencias Exactas y Naturales
+//  Escuela de Informática
+//  
+//      I Proyecto
+//       (Latitud)
+//
+//  Autores: Joel Agüero Campos
+//           Rebecca Garita Gutiérrez
+//           María Fernanda González Arias
+//
+//  III Ciclo 2019
+
 public class Latitud {
 
     private int grados;
@@ -62,6 +75,6 @@ public class Latitud {
     }
 
     public double latitudToDecimal() {
-        return getGrados() + (double) getMinutos() / 60 + (double) getSegundos() / 60;
+        return getGrados() + (double) getMinutos() / 60 + (double) getSegundos() / 3600;
     }
 }

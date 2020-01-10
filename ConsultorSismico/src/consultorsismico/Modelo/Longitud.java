@@ -1,16 +1,20 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package consultorsismico.Modelo;
 
 import javax.xml.bind.annotation.XmlElement;
 
-/**
- *
- * @author rebecca
- */
+//  Universidad Nacional
+//  Facultad de Ciencias Exactas y Naturales
+//  Escuela de Informática
+//  
+//      I Proyecto
+//      (Longitud)
+//
+//  Autores: Joel Agüero Campos
+//           Rebecca Garita Gutiérrez
+//           María Fernanda González Arias
+//
+//  III Ciclo 2019
+
 public class Longitud {
 
     private int grados;

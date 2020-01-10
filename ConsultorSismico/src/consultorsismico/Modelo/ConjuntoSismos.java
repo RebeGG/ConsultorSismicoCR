@@ -4,6 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
 
+//  Universidad Nacional
+//  Facultad de Ciencias Exactas y Naturales
+//  Escuela de Informática
+//  
+//      I Proyecto
+//     (ConjuntoSismos)
+//
+//  Autores: Joel Agüero Campos
+//           Rebecca Garita Gutiérrez
+//           María Fernanda González Arias
+//
+//  III Ciclo 2019
+
 public class ConjuntoSismos extends Observable {
     
     public ConjuntoSismos() {
@@ -18,9 +31,14 @@ public class ConjuntoSismos extends Observable {
         this.sismos = sismos;
     }
 
+    public List<Sismo> getSismos(){
+        return sismos;
+    }
+    
     public int cantidadSismos() {
         return sismos.size();
     }
+    
 
     public Sismo obtener(int i) {
         return sismos.get(i);

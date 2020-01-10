@@ -1,5 +1,18 @@
 package consultorsismico.Modelo;
 
+//  Universidad Nacional
+//  Facultad de Ciencias Exactas y Naturales
+//  Escuela de Informática
+//  
+//      I Proyecto
+//     (Conversion)
+//
+//  Autores: Joel Agüero Campos
+//           Rebecca Garita Gutiérrez
+//           María Fernanda González Arias
+//
+//  III Ciclo 2019
+
 public class Conversion {
 
     Coordenada primera;
@@ -58,7 +71,7 @@ public class Conversion {
     //Buscar la posición y según una latitud
     // t = x - a / b - a
     public double latitudT(Latitud aux) {
-        return ((aux.latitudToDecimal() + primera.getPosM().getLatitud().getGrados()) / (double)(-segunda.getPosM().getLatitud().getGrados() + primera.getPosM().getLatitud().getGrados()));
+        return ((-aux.latitudToDecimal() + primera.getPosM().getLatitud().getGrados()) / (double)(-segunda.getPosM().getLatitud().getGrados() + primera.getPosM().getLatitud().getGrados()));
     }
 
     //Buscar la latitud en pixeles
@@ -80,7 +93,7 @@ public class Conversion {
     }
 
     public PosicionImagen coordenadatoPixeles(Longitud x, Latitud y) {
-        return new PosicionImagen((int) longitudPix(x), (int) latitudPix(y));
+        return new PosicionImagen((int) longitudPix(x), (int) latitudPix(y)); 
     }
 
     // ------BUSCAR LA COORDENADA GEOGRÁFICA (LONGITUD, LATITUD)------

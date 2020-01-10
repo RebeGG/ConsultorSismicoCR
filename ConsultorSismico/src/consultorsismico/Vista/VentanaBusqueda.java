@@ -6,6 +6,19 @@ import java.awt.Color;
 import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 
+//  Universidad Nacional
+//  Facultad de Ciencias Exactas y Naturales
+//  Escuela de Informática
+//  
+//      I Proyecto
+//   (VentanaBusqueda)
+//
+//  Autores: Joel Agüero Campos
+//           Rebecca Garita Gutiérrez
+//           María Fernanda González Arias
+//
+//  III Ciclo 2019
+
 public class VentanaBusqueda extends javax.swing.JFrame{
 
     public VentanaBusqueda(String titulo, Controlador controlador) {
@@ -159,7 +172,7 @@ public class VentanaBusqueda extends javax.swing.JFrame{
         gridBagConstraints.insets = new java.awt.Insets(11, 18, 0, 0);
         getContentPane().add(fechaInicial, gridBagConstraints);
 
-        fechaFinal.setMaxSelectableDate(new java.util.Date(1579503692000L));
+        fechaFinal.setMaxSelectableDate(new java.util.Date(1580454092000L));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 9;
