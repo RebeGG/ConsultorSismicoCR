@@ -1,6 +1,7 @@
 package consultorsismico.Modelo;
 
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -193,7 +194,7 @@ public class Modelo extends Observable {
         return listaBusqueda.obtenerModelo();
     }
 
-    public void dibujar(Graphics bg) {
+    public void dibujar(Graphics2D bg) {
         synchronized (sismos) {
             for (Sismo m : sismos) {
                 m.dibujar(bg);

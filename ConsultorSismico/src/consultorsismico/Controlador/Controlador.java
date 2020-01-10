@@ -7,6 +7,7 @@ import consultorsismico.Modelo.Modelo;
 import consultorsismico.Modelo.PosicionImagen;
 import consultorsismico.Modelo.Sismo;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Point;
 import java.io.File;
 import java.io.IOException;
@@ -83,7 +84,7 @@ public class Controlador {
         System.exit(0);
     }
 
-    public void dibujarModel(Graphics g) {
+    public void dibujarModel(Graphics2D g) {
         datos.dibujar(g);
     }
 

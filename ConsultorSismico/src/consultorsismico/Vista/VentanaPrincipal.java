@@ -4,6 +4,7 @@ import consultorsismico.Controlador.Controlador;
 import consultorsismico.Modelo.MapaBase;
 import consultorsismico.Modelo.Modelo;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -59,7 +60,6 @@ public class VentanaPrincipal extends JFrame implements Observer{
         this.controlador = controlador;
         this.ventanaTabla = new VentanaTabla("Datos Tabulados",this.controlador);
         this.ventanaSeleccion = new VentanaSeleccion("Consultar Sismos",this.controlador);
-        
         configurar();
     }
 
@@ -153,7 +153,16 @@ public class VentanaPrincipal extends JFrame implements Observer{
 
     @Override
     public void update(Observable o, Object arg) {
+//        modelo = (Modelo) o;
+        System.out.println("Update Venatna Principal");
         modelo = (Modelo) o;
+        if(modelo != null){
+            System.out.println("Modelo no es nulo");
+        }
+        else{
+            System.out.println("Modelo es nulo");
+        }
         panelPrincipal.repaint();
+        System.out.println("Se llamó repaint desde Ventana Principal");
     }
 }

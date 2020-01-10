@@ -54,9 +54,9 @@ public class PanelMapa extends PanelAplicacion implements Observer{
         this.posicionInicio = null;
         this.posicionRaton = null;
         this.background = new JLabel();
-        background.setIcon(new ImageIcon(mapa));
-        background.setSize(base.getImagen().getDimension().getAncho(), base.getImagen().getDimension().getAncho());
-        this.add(background);
+//        background.setIcon(new ImageIcon(mapa));
+//        background.setSize(base.getImagen().getDimension().getAncho(), base.getImagen().getDimension().getAncho());
+//        this.add(background);
         setPreferredSize(new Dimension(base.getImagen().getDimension().getAncho(), base.getImagen().getDimension().getAncho()));
         controlador.registrar(this);
     }
@@ -158,9 +158,10 @@ public class PanelMapa extends PanelAplicacion implements Observer{
                 
         if (modelo != null) {
             controlador.dibujarModel(g);
+            System.out.println("Verifiación para dibujar: NO NULO");
         }
         else{
-            System.out.println("lo recibe null");
+            System.out.println("Verifiación para dibujar: NULO");
             //esto solo lo pregunta 1 vez, no debería ser, porque este metodo se llama mas veces y funciona para que
             //dibuje las lineas guias y las lineas del mouse.....
         }
@@ -191,12 +192,24 @@ public class PanelMapa extends PanelAplicacion implements Observer{
 
         if (modelo != null) {
             estado.mostrarMensaje(modelo.getCoordenada().getPosM().toString());
+            System.out.println("Verifiación para barra: NO NULO");
+        }
+        else{
+            System.out.println("Verifiación para barra: NULO");
         }
     }      
     
     @Override
     public void update(Observable o, Object arg){
+        System.out.println("Update PanelMapa");
         modelo = (Modelo) o;
+        if(modelo != null){
+            System.out.println("Modelo no es nulo");
+        }
+        else{
+            System.out.println("Modelo es nulo");
+        }
         this.repaint();
+        System.out.println("Se llamó repaint desde PanelMapa");
     }
 }

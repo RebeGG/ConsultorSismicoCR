@@ -100,9 +100,9 @@ public class Sismo {
         return 7;
     }
 
-    public void dibujar(Graphics bg) {
+    public void dibujar(Graphics2D g) {
         
-        Graphics2D g = (Graphics2D) bg;
+        //Graphics2D g = (Graphics2D) bg;
         g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
                 RenderingHints.VALUE_ANTIALIAS_ON);
         if (coordenada.getPosI().getX() < POS1 && coordenada.getPosI().getX() >= 0) {
