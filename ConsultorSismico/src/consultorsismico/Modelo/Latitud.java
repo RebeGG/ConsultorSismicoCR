@@ -62,6 +62,6 @@ public class Latitud {
     }
 
     public double latitudToDecimal() {
-        return getGrados() + (double) getMinutos() / 60 + (double) getSegundos() / 60;
+        return getGrados() + (double) getMinutos() / 60 + (double) getSegundos() / 3600;
     }
 }
