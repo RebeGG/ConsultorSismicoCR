@@ -87,7 +87,7 @@ public class Conversion {
     
     //Encontrar t de pixeles a coordenadas
     public double longitudTPix(int x) {
-        return (x - primera.getPosI().getX()) / anchoPixeles();
+        return (x - (double) primera.getPosI().getX()) / anchoPixeles();
     }
 
     //Encontrar los grados f(t) = a + t(b-a)
@@ -97,12 +97,22 @@ public class Conversion {
 
     //m' = integer((dd - d) × 60) 
     public int longitudMinutos(int x) {
-        return (int) (Math.abs(longitudGrados(x)) - (int) Math.abs(longitudGrados(x))) * 60;
+        double longitud= longitudGrados(x);
+        int res= (int) ((Math.abs(longitud) - (int)Math.abs(longitud)) * 60);
+        System.out.print("X: ");
+        System.out.println(x);
+        System.out.print("longitud: ");
+        System.out.println(longitud);
+        System.out.print("longitud calc: ");
+        System.out.println((Math.abs(longitud) - (int)Math.abs(longitud)));
+        System.out.print("res: ");
+        System.out.println(res);
+        return res;
     }
 
     //s" = (dd - d - m/60) × 3600 
     public int longitudSegundos(int x) {
-        return (int) (Math.abs(longitudGrados(x)) - (int) Math.abs(longitudGrados(x)) - (longitudMinutos(x) / 60)) * 3600;
+        return (int) ((Math.abs((double)longitudGrados(x)) - (int) Math.abs(longitudGrados(x)) - ((double)longitudMinutos(x) / 60)) * 3600);
     }
 
     public Longitud longPix(int y) {
@@ -111,22 +121,22 @@ public class Conversion {
     
     //Encontrar t de pixeles a coordenadas
     public double latitudTPix(int y) {
-        return (y - primera.getPosI().getY()) / alturaPixeles();
+        return (y - (double)primera.getPosI().getY()) / (double)alturaPixeles();
     }
     
     //Encontrar los grados f(t) = a + t(b-a)
     public double latitudGrados(int x) {
-        return primera.getPosM().getLatitud().getGrados() + latitudTPix(x) * anchoGrados();
+        return primera.getPosM().getLatitud().getGrados() + (double)latitudTPix(x) * (double)-anchoGrados();
     }
 
     //m' = integer((dd - d) × 60)
     public int latitudMinutos(int x) {
-        return (int) (Math.abs(latitudGrados(x)) - (int) Math.abs(latitudGrados(x))) * 60;
+        return (int) ((Math.abs((double)latitudGrados(x)) - (int) Math.abs(latitudGrados(x))) * 60);
     }
 
     //s" = (dd - d - m/60) × 3600 
     public int latitudSegundos(int x) {
-        return (int) (Math.abs(latitudGrados(x)) - (int) Math.abs(latitudGrados(x)) - (latitudMinutos(x) / 60)) * 3600;
+        return (int) ((Math.abs((double)latitudGrados(x)) - (int) Math.abs(latitudGrados(x)) - ((double)latitudMinutos(x) / 60)) * 3600);
     }
 
     public Latitud latPix(int x) {
@@ -141,12 +151,12 @@ public class Conversion {
     // ------BUSCAR LA COORDENADA GEOGRÁFICA (DOUBLE)------
     
     public int latitudMinutos(double x) {
-        return (int) (Math.abs(x) - (int) Math.abs(x)) * 60;
+        return (int) ((Math.abs(x) - (int) Math.abs(x)) * 60);
     }
 
     //s" = (dd - d - m/60) × 3600 
     public int latitudSegundos(double x) {
-        return (int) ((Math.abs(x) - (int) Math.abs(x)) - (latitudMinutos(x) / 60)) * 3600;
+        return (int) (((Math.abs(x) - (int) Math.abs(x)) - (latitudMinutos(x) / 60)) * 3600);
     }
 
     public Latitud latPix(double x) {
@@ -154,12 +164,12 @@ public class Conversion {
     }
     
     public int longitudMinutos(double x) {
-        return (int) (Math.abs(x) - (int) Math.abs(x)) * 60;
+        return (int) ((Math.abs(x) - (int) Math.abs(x)) * 60);
     }
 
     //s" = (dd - d - m/60) × 3600 
     public int longitudSegundos(double x) {
-        return (int) ((Math.abs(x) - (int) Math.abs(x)) - (longitudMinutos(x) / 60)) * 3600;
+        return (int) (((Math.abs(x) - (int) Math.abs(x)) - (longitudMinutos(x) / 60)) * 3600);
     }
 
     public Longitud longPix(double x) {

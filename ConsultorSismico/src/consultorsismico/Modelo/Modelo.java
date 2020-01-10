@@ -42,10 +42,8 @@ public class Modelo extends Observable {
         return sismos;
     }
 
-    public void setSismos(List sismos) {
+    public void setSismos(List<Sismo> sismos) {
         this.sismos = sismos;
-        setChanged();
-        notifyObservers();
     }
 
     public Coordenada getCoordenada() {

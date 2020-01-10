@@ -106,7 +106,7 @@ public class Controlador {
     }
     
     public void actualizaCoordenadasModel(Point p){
-        datos.setCoordenada(new Coordenada(new PosicionImagen(p.y,p.x), conver.nuevaCoordenada(p.y, p.x)));
+        datos.setCoordenada(new Coordenada(new PosicionImagen(p.x,p.y), conver.nuevaCoordenada(p.x, p.y)));
     }
 
     private Modelo datos;
