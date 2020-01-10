@@ -97,17 +97,7 @@ public class Conversion {
 
     //m' = integer((dd - d) × 60) 
     public int longitudMinutos(int x) {
-        double longitud= longitudGrados(x);
-        int res= (int) ((Math.abs(longitud) - (int)Math.abs(longitud)) * 60);
-        System.out.print("X: ");
-        System.out.println(x);
-        System.out.print("longitud: ");
-        System.out.println(longitud);
-        System.out.print("longitud calc: ");
-        System.out.println((Math.abs(longitud) - (int)Math.abs(longitud)));
-        System.out.print("res: ");
-        System.out.println(res);
-        return res;
+        return (int) ((Math.abs(longitudGrados(x)) - (int)Math.abs(longitudGrados(x))) * 60);
     }
 
     //s" = (dd - d - m/60) × 3600 

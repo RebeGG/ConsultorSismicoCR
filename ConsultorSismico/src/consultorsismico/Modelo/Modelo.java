@@ -38,7 +38,7 @@ public class Modelo extends Observable {
         notifyObservers();
     }
 
-    public List getSismos() {
+    public List<Sismo> getSismos() {
         return sismos;
     }
 
